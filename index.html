@@ -1,1935 +1,2062 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#151113">
-<meta name="mobile-web-app-capable" content="yes">
-<title>BIRTHDAY MAGAZINE — 20th Special Edition</title>
 
-<!-- ============================================================
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#151113">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>BIRTHDAY MAGAZINE — 20th Special Edition</title>
+
+  <!-- ============================================================
      FONTS — Editorial typography
      ============================================================ -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
 
-<!-- StPageFlip Library for Realistic Paper Curl & Page Turning -->
-<script src="page-flip.browser.js"></script>
+  <!-- StPageFlip Library for Realistic Paper Curl & Page Turning -->
+  <script src="page-flip.browser.js"></script>
 
-<style>
-/* ============================================================
+  <style>
+    /* ============================================================
    RESET & ROOT VARIABLES
    ============================================================ */
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-}
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-:root {
-  --burgundy: #6B1D2A;
-  --burgundy-dark: #3F0C16;
-  --wine: #8B2540;
-  --cream: #FAF6F0;
-  --ivory: #F3ECE1;
-  --gold: #C9A96E;
-  --gold-light: #E8D5A8;
-  --charcoal: #2A2A2A;
-  --soft-black: #111111;
+    :root {
+      --burgundy: #6B1D2A;
+      --burgundy-dark: #3F0C16;
+      --wine: #8B2540;
+      --cream: #FAF6F0;
+      --ivory: #F3ECE1;
+      --gold: #C9A96E;
+      --gold-light: #E8D5A8;
+      --charcoal: #2A2A2A;
+      --soft-black: #111111;
 
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-sans: 'Montserrat', -apple-system, sans-serif;
-}
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Montserrat', -apple-system, sans-serif;
+    }
 
-html, body {
-  width: 100%;
-  height: 100%;
-  background: #0d0d0d;
-  color: var(--charcoal);
-  font-family: var(--font-sans);
-  overflow: hidden;
-  user-select: none;
-  -webkit-font-smoothing: antialiased;
-}
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      background: #0d0d0d;
+      color: var(--charcoal);
+      font-family: var(--font-sans);
+      overflow: hidden;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* Background ambient blur */
-.ambient-bg {
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: radial-gradient(circle at 50% 30%, #251217 0%, #0d0d0d 85%);
-  z-index: 0;
-}
+    /* Background ambient blur */
+    .ambient-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 30%, #251217 0%, #0d0d0d 85%);
+      z-index: 0;
+    }
 
-/* Center book stage */
-#magazine-stage {
-  position: relative;
-  width: 100vw;
-  height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-  padding: 10px;
-}
+    /* Center book stage */
+    #magazine-stage {
+      position: relative;
+      width: 100vw;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      padding: 10px;
+    }
 
-/* StPageFlip wrapper */
-#flipbook-wrapper {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 60px rgba(107, 29, 42, 0.4));
-}
+    /* StPageFlip wrapper */
+    #flipbook-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 60px rgba(107, 29, 42, 0.4));
+    }
 
-#flipbook {
-  position: relative;
-}
+    #flipbook {
+      position: relative;
+    }
 
-/* Individual page container for StPageFlip */
-.mag-page {
-  background: var(--cream);
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  box-sizing: border-box;
-  position: relative;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
+    /* Individual page container for StPageFlip */
+    .mag-page {
+      background: var(--cream);
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      box-sizing: border-box;
+      position: relative;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
 
-/* Force StPageFlip hidden pages to stay invisible */
-.stf__item {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
+    /* Force StPageFlip hidden pages to stay invisible */
+    .stf__item {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
 
-/* Scrollable inner content WITHIN the page (not the page itself) */
-.inner-page-content {
-  overflow-y: auto;
-  overflow-x: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: var(--gold) transparent;
-}
+    /* Scrollable inner content WITHIN the page (not the page itself) */
+    .inner-page-content {
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold) transparent;
+    }
 
-.inner-page-content::-webkit-scrollbar {
-  width: 3px;
-}
-.inner-page-content::-webkit-scrollbar-thumb {
-  background: var(--gold);
-  border-radius: 3px;
-}
+    .inner-page-content::-webkit-scrollbar {
+      width: 3px;
+    }
 
-/* Paper grain overlay */
-.mag-page::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 50;
-}
+    .inner-page-content::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 3px;
+    }
 
-/* Realistic Book Center Spine Crease Shadows */
-.page-spine-shadow {
-  position: absolute;
-  top: 0;
-  width: 25px;
-  height: 100%;
-  pointer-events: none;
-  z-index: 40;
-}
+    /* Paper grain overlay */
+    .mag-page::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 50;
+    }
 
-.page-left .page-spine-shadow {
-  right: 0;
-  left: auto;
-  background: linear-gradient(to left, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.06) 50%, transparent 100%);
-}
+    /* Realistic Book Center Spine Crease Shadows */
+    .page-spine-shadow {
+      position: absolute;
+      top: 0;
+      width: 25px;
+      height: 100%;
+      pointer-events: none;
+      z-index: 40;
+    }
 
-.page-right .page-spine-shadow {
-  left: 0;
-  right: auto;
-  background: linear-gradient(to right, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.06) 50%, transparent 100%);
-}
+    .page-left .page-spine-shadow {
+      right: 0;
+      left: auto;
+      background: linear-gradient(to left, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.06) 50%, transparent 100%);
+    }
 
-/* ============================================================
+    .page-right .page-spine-shadow {
+      left: 0;
+      right: auto;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.06) 50%, transparent 100%);
+    }
+
+    /* ============================================================
    PAGE 0: LUXURY VOGUE COVER
    ============================================================ */
-.cover-page {
-  background: #151113;
-  color: var(--cream);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden !important;
-}
+    .cover-page {
+      background: #151113;
+      color: var(--cream);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden !important;
+    }
 
-.finale-page {
-  background: linear-gradient(to bottom, #FAF6F0 0%, #F5EDE3 100%) !important;
-  color: var(--charcoal) !important;
-  display: flex;
-  flex-direction: column;
-}
+    .finale-page {
+      background: linear-gradient(to bottom, #FAF6F0 0%, #F5EDE3 100%) !important;
+      color: var(--charcoal) !important;
+      display: flex;
+      flex-direction: column;
+    }
 
-.cover-hero-img {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: center 24%;
-  filter: contrast(1.05) brightness(0.96);
-  z-index: 1;
-}
+    .cover-hero-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 24%;
+      filter: contrast(1.05) brightness(0.96);
+      z-index: 1;
+    }
 
-.cover-vignette {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(15, 10, 12, 0.72) 0%,
-    rgba(15, 10, 12, 0.1) 22%,
-    rgba(15, 10, 12, 0.12) 58%,
-    rgba(15, 10, 12, 0.9) 100%
-  ),
-  linear-gradient(
-    to right,
-    rgba(15, 10, 12, 0.7) 0%,
-    rgba(15, 10, 12, 0.08) 45%,
-    rgba(15, 10, 12, 0.65) 100%
-  );
-  z-index: 2;
-}
+    .cover-vignette {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom,
+          rgba(15, 10, 12, 0.72) 0%,
+          rgba(15, 10, 12, 0.1) 22%,
+          rgba(15, 10, 12, 0.12) 58%,
+          rgba(15, 10, 12, 0.9) 100%),
+        linear-gradient(to right,
+          rgba(15, 10, 12, 0.7) 0%,
+          rgba(15, 10, 12, 0.08) 45%,
+          rgba(15, 10, 12, 0.65) 100%);
+      z-index: 2;
+    }
 
-.cover-content {
-  position: relative;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  padding: 12px 16px 10px;
-}
+    .cover-content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      padding: 12px 16px 10px;
+    }
 
-.cover-top-tag {
-  text-align: center;
-  font-size: 0.44rem;
-  letter-spacing: 3.5px;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.85);
-  font-weight: 600;
-  padding-bottom: 2px;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.9);
-  white-space: nowrap;
-}
+    .cover-top-tag {
+      text-align: center;
+      font-size: 0.44rem;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 600;
+      padding-bottom: 2px;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+      white-space: nowrap;
+    }
 
-.cover-masthead-wrap {
-  position: relative;
-  margin-top: 1px;
-  padding-bottom: 2px;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
+    .cover-masthead-wrap {
+      position: relative;
+      margin-top: 1px;
+      padding-bottom: 2px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
 
-.cover-masthead {
-  font-family: var(--font-display);
-  font-size: 2.5rem;
-  font-weight: 900;
-  letter-spacing: 2.5px;
-  line-height: 0.9;
-  color: #F8F5EE;
-  text-transform: uppercase;
-  text-align: left;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.8);
-}
+    .cover-masthead {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: 2.5px;
+      line-height: 0.9;
+      color: #F8F5EE;
+      text-transform: uppercase;
+      text-align: left;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+    }
 
-.cover-masthead-sub {
-  font-family: var(--font-display);
-  font-size: 0.88rem;
-  letter-spacing: 4px;
-  color: #E8D5A8;
-  font-weight: 400;
-  text-transform: uppercase;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
-  margin-bottom: 2px;
-}
+    .cover-masthead-sub {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      letter-spacing: 4px;
+      color: #E8D5A8;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+      margin-bottom: 2px;
+    }
 
-.cover-headlines-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto auto;
-  gap: 8px 12px;
-  margin: 4px 0;
-  flex-grow: 1;
-  align-content: space-between;
-}
+    .cover-headlines-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto auto;
+      gap: 8px 12px;
+      margin: 4px 0;
+      flex-grow: 1;
+      align-content: space-between;
+    }
 
-.cover-block-btn {
-  background: none;
-  border: none;
-  color: #fff;
-  text-align: left;
-  padding: 0;
-  cursor: pointer;
-  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.3, 1);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
+    .cover-block-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      text-align: left;
+      padding: 0;
+      cursor: pointer;
+      transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.3, 1);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
 
-.cover-block-btn:hover {
-  transform: translateY(-2px);
-  filter: drop-shadow(0 2px 8px rgba(201, 169, 110, 0.6));
-}
+    .cover-block-btn:hover {
+      transform: translateY(-2px);
+      filter: drop-shadow(0 2px 8px rgba(201, 169, 110, 0.6));
+    }
 
-.cover-block-btn:active {
-  transform: scale(0.97);
-}
+    .cover-block-btn:active {
+      transform: scale(0.97);
+    }
 
-.block-bday-num {
-  font-family: var(--font-display);
-  font-size: 1.75rem;
-  font-weight: 900;
-  line-height: 0.85;
-  color: #FBF8F2;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.9);
-}
+    .block-bday-num {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 900;
+      line-height: 0.85;
+      color: #FBF8F2;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    }
 
-.block-bday-title {
-  font-family: var(--font-display);
-  font-size: 0.66rem;
-  letter-spacing: 2px;
-  font-weight: 700;
-  color: var(--gold-light);
-  margin-top: 1px;
-  text-transform: uppercase;
-}
+    .block-bday-title {
+      font-family: var(--font-display);
+      font-size: 0.66rem;
+      letter-spacing: 2px;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-top: 1px;
+      text-transform: uppercase;
+    }
 
-.block-bday-text {
-  font-size: 0.4rem;
-  line-height: 1.35;
-  letter-spacing: 0.8px;
-  color: rgba(255, 255, 255, 0.8);
-  text-transform: uppercase;
-  margin-top: 2px;
-  max-width: 135px;
-}
+    .block-bday-text {
+      font-size: 0.4rem;
+      line-height: 1.35;
+      letter-spacing: 0.8px;
+      color: rgba(255, 255, 255, 0.8);
+      text-transform: uppercase;
+      margin-top: 2px;
+      max-width: 135px;
+    }
 
-.block-rule {
-  width: 22px;
-  height: 1px;
-  background: var(--gold);
-  margin-top: 3px;
-  opacity: 0.85;
-}
+    .block-rule {
+      width: 22px;
+      height: 1px;
+      background: var(--gold);
+      margin-top: 3px;
+      opacity: 0.85;
+    }
 
-.block-yourday {
-  text-align: right;
-  align-items: flex-end;
-}
+    .block-yourday {
+      text-align: right;
+      align-items: flex-end;
+    }
 
-.block-yourday-title {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 900;
-  line-height: 1.05;
-  text-transform: uppercase;
-  color: #FFF;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.9);
-}
+    .block-yourday-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 900;
+      line-height: 1.05;
+      text-transform: uppercase;
+      color: #FFF;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    }
 
-.block-yourday-text {
-  font-size: 0.42rem;
-  letter-spacing: 1.1px;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.78);
-  line-height: 1.35;
-  margin-top: 2px;
-}
+    .block-yourday-text {
+      font-size: 0.42rem;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.35;
+      margin-top: 2px;
+    }
 
-.block-gettoknow-title {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 900;
-  line-height: 0.98;
-  text-transform: uppercase;
-  color: #FFF;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.9);
-}
+    .block-gettoknow-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 900;
+      line-height: 0.98;
+      text-transform: uppercase;
+      color: #FFF;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    }
 
-.block-gettoknow-text {
-  font-size: 0.4rem;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.76);
-  line-height: 1.35;
-  margin-top: 2px;
-}
+    .block-gettoknow-text {
+      font-size: 0.4rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.76);
+      line-height: 1.35;
+      margin-top: 2px;
+    }
 
-.block-reasons {
-  text-align: right;
-  align-items: flex-end;
-}
+    .block-reasons {
+      text-align: right;
+      align-items: flex-end;
+    }
 
-.block-reasons-num {
-  font-family: var(--font-display);
-  font-size: 1.85rem;
-  font-weight: 900;
-  line-height: 0.85;
-  color: var(--gold-light);
-  text-shadow: 0 2px 8px rgba(0,0,0,0.9);
-}
+    .block-reasons-num {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      font-weight: 900;
+      line-height: 0.85;
+      color: var(--gold-light);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    }
 
-.block-reasons-text {
-  font-family: var(--font-display);
-  font-size: 0.62rem;
-  letter-spacing: 1.6px;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #FFF;
-  margin-top: 2px;
-  line-height: 1.22;
-}
+    .block-reasons-text {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      letter-spacing: 1.6px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #FFF;
+      margin-top: 2px;
+      line-height: 1.22;
+    }
 
-.block-edition-tag {
-  font-size: 0.44rem;
-  letter-spacing: 1.6px;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-weight: 700;
-  margin-top: 3px;
-}
+    .block-edition-tag {
+      font-size: 0.44rem;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-top: 3px;
+    }
 
-.block-year-num {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 900;
-  line-height: 0.9;
-  color: #FFF;
-}
+    .block-year-num {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 900;
+      line-height: 0.9;
+      color: #FFF;
+    }
 
-.block-year-text {
-  font-size: 0.39rem;
-  letter-spacing: 0.8px;
-  color: rgba(255, 255, 255, 0.75);
-  text-transform: uppercase;
-  line-height: 1.3;
-  margin-top: 2px;
-}
+    .block-year-text {
+      font-size: 0.39rem;
+      letter-spacing: 0.8px;
+      color: rgba(255, 255, 255, 0.75);
+      text-transform: uppercase;
+      line-height: 1.3;
+      margin-top: 2px;
+    }
 
-.cover-footer-wrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  padding-top: 5px;
-  margin-top: 2px;
-}
+    .cover-footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 5px;
+      margin-top: 2px;
+    }
 
-.cover-tagline {
-  font-size: 0.4rem;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 500;
-  white-space: nowrap;
-}
+    .cover-tagline {
+      font-size: 0.4rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 500;
+      white-space: nowrap;
+    }
 
-.barcode-box {
-  display: flex;
-  align-items: flex-end;
-  gap: 2.5px;
-  background: rgba(255, 255, 255, 0.92);
-  padding: 2px 4px;
-  border-radius: 2px;
-}
+    .barcode-box {
+      display: flex;
+      align-items: flex-end;
+      gap: 2.5px;
+      background: rgba(255, 255, 255, 0.92);
+      padding: 2px 4px;
+      border-radius: 2px;
+    }
 
-.barcode-lines {
-  display: flex;
-  gap: 1px;
-  height: 16px;
-  align-items: flex-end;
-}
+    .barcode-lines {
+      display: flex;
+      gap: 1px;
+      height: 16px;
+      align-items: flex-end;
+    }
 
-.bc-bar {
-  background: #111;
-  height: 100%;
-}
+    .bc-bar {
+      background: #111;
+      height: 100%;
+    }
 
-.barcode-num {
-  font-size: 0.26rem;
-  letter-spacing: 0.4px;
-  color: #111;
-  font-weight: 700;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-}
+    .barcode-num {
+      font-size: 0.26rem;
+      letter-spacing: 0.4px;
+      color: #111;
+      font-weight: 700;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
 
-/* ============================================================
+    /* ============================================================
    INNER EDITORIAL PAGES
    ============================================================ */
-.inner-page-content {
-  padding: 12px 14px 14px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.page-top-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba(201, 169, 110, 0.3);
-  padding-bottom: 4px;
-  margin-bottom: 6px;
-}
-
-.back-to-cover-btn {
-  background: var(--burgundy);
-  color: #fff;
-  border: none;
-  font-family: var(--font-sans);
-  font-size: 0.44rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 2px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: all 0.2s ease;
-}
-
-.back-to-cover-btn:hover {
-  background: var(--wine);
-  transform: translateX(-2px);
-}
-
-.page-folio {
-  font-size: 0.42rem;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-weight: 600;
-}
-
-.editorial-header {
-  text-align: center;
-  margin-bottom: 6px;
-}
-
-.ed-eyebrow {
-  font-size: 0.42rem;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-weight: 700;
-  display: block;
-  margin-bottom: 2px;
-}
-
-.ed-title {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 900;
-  color: var(--burgundy-dark);
-  line-height: 1.05;
-  text-transform: uppercase;
-}
-
-.ed-title em {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  text-transform: none;
-}
-
-.ed-subtitle {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 0.8rem;
-  color: var(--wine);
-  opacity: 0.85;
-  margin-top: 1px;
-}
-
-.ed-rule {
-  width: 28px;
-  height: 1px;
-  background: var(--gold);
-  margin: 5px auto 0;
-}
-
-.editorial-pullquote {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 0.88rem;
-  line-height: 1.35;
-  color: var(--wine);
-  text-align: center;
-  border-top: 1px solid rgba(201, 169, 110, 0.25);
-  border-bottom: 1px solid rgba(201, 169, 110, 0.25);
-  padding: 4px 6px;
-  margin: 5px 0;
-}
-
-.photo-frame-wrap {
-  text-align: center;
-  background: #FFF;
-  border: 1px solid rgba(201, 169, 110, 0.35);
-  padding: 4px 4px 3px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  margin: 5px auto;
-  display: inline-block;
-  max-width: 90%;
-  border-radius: 2px;
-}
-
-.editorial-portrait-img {
-  max-height: 165px;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-  border-radius: 1px;
-}
-
-.photo-caption {
-  font-size: 0.39rem;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: #666;
-  padding: 3px 2px 1px;
-  text-align: center;
-  font-style: italic;
-  line-height: 1.25;
-}
-
-/* ── 10 REASONS LIST ── */
-.reasons-two-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3px 8px;
-  margin-top: 5px;
-}
-
-.reason-row {
-  display: flex;
-  align-items: baseline;
-  gap: 5px;
-  border-bottom: 1px solid rgba(201, 169, 110, 0.18);
-  padding-bottom: 2px;
-}
-
-.reason-num {
-  font-family: var(--font-display);
-  font-size: 0.88rem;
-  font-weight: 900;
-  color: var(--gold);
-  line-height: 1;
-  min-width: 1.1rem;
-}
-
-.reason-desc {
-  font-family: var(--font-serif);
-  font-size: 0.74rem;
-  color: var(--charcoal);
-  line-height: 1.25;
-}
-
-/* ── FUN FACTS INTERVIEW GRID ── */
-.facts-magazine-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5px;
-  margin-top: 5px;
-}
-
-.fact-item {
-  background: #FFF;
-  border: 1px solid rgba(201, 169, 110, 0.22);
-  padding: 4px;
-  text-align: center;
-  border-radius: 2px;
-}
-
-.fact-item-label {
-  font-size: 0.38rem;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1px;
-}
-
-.fact-item-val {
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--burgundy-dark);
-  line-height: 1.15;
-}
-
-.fact-full-card {
-  grid-column: 1 / -1;
-  background: #FFF;
-  border-left: 2px solid var(--gold);
-  border-top: 1px solid rgba(201, 169, 110, 0.22);
-  border-right: 1px solid rgba(201, 169, 110, 0.22);
-  border-bottom: 1px solid rgba(201, 169, 110, 0.22);
-  padding: 5px;
-  text-align: center;
-  margin-top: 2px;
-}
-
-/* ── TIMELINE ── */
-.timeline-track {
-  position: relative;
-  padding-left: 1.1rem;
-  margin-top: 5px;
-}
-
-.timeline-track::before {
-  content: '';
-  position: absolute;
-  top: 4px; bottom: 4px; left: 3px;
-  width: 1px;
-  background: var(--gold);
-}
-
-.timeline-node {
-  position: relative;
-  padding-bottom: 6px;
-}
-
-.timeline-node::before {
-  content: '';
-  position: absolute;
-  left: -1.1rem;
-  top: 3px;
-  width: 6px; height: 6px;
-  background: var(--wine);
-  border: 1.5px solid var(--gold);
-  border-radius: 50%;
-}
-
-.tl-date {
-  font-size: 0.4rem;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  color: var(--gold);
-  text-transform: uppercase;
-}
-
-.tl-title {
-  font-family: var(--font-display);
-  font-size: 0.84rem;
-  font-weight: 700;
-  color: var(--burgundy-dark);
-  margin: 1px 0;
-}
-
-.tl-desc {
-  font-family: var(--font-serif);
-  font-size: 0.74rem;
-  color: #444;
-  line-height: 1.3;
-}
-
-/* ── 20 MEMORIES GRID ── */
-.memories-masonry {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3px 5px;
-  margin-top: 5px;
-}
-
-.memory-card {
-  background: #FFF;
-  border: 1px solid rgba(201, 169, 110, 0.18);
-  padding: 3px 5px;
-  border-radius: 2px;
-}
-
-.mem-num {
-  font-family: var(--font-display);
-  font-size: 0.88rem;
-  font-weight: 900;
-  color: var(--gold);
-  opacity: 0.85;
-  line-height: 1;
-}
-
-.mem-text {
-  font-family: var(--font-serif);
-  font-size: 0.68rem;
-  color: #333;
-  line-height: 1.2;
-  margin-top: 1px;
-}
-
-/* ── THE STYLE EDIT & VIBES ── */
-.vibe-badge-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px 6px;
-  margin-top: 5px;
-}
-
-.vibe-card {
-  background: #FFF;
-  border: 1px solid rgba(201, 169, 110, 0.22);
-  padding: 4px 6px;
-  border-radius: 2px;
-}
-
-.vibe-label {
-  font-size: 0.38rem;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-weight: 700;
-}
-
-.vibe-val {
-  font-family: var(--font-serif);
-  font-size: 0.76rem;
-  color: var(--charcoal);
-  font-weight: 600;
-  line-height: 1.2;
-  margin-top: 1px;
-}
-
-.playlist-section {
-  background: #FFF;
-  border: 1px solid rgba(201, 169, 110, 0.25);
-  border-radius: 2px;
-  padding: 5px 8px;
-  margin-top: 6px;
-}
-
-.playlist-title {
-  font-size: 0.42rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--burgundy);
-  font-weight: 700;
-  border-bottom: 1px solid rgba(201, 169, 110, 0.2);
-  padding-bottom: 2px;
-  margin-bottom: 3px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.track-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2px 0;
-  border-bottom: 1px dashed rgba(201, 169, 110, 0.15);
-}
-
-.track-row:last-child {
-  border-bottom: none;
-}
-
-.track-title {
-  font-family: var(--font-display);
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--burgundy-dark);
-}
-
-.track-artist {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 0.65rem;
-  color: #666;
-}
-
-/* ── CHAPTER 20 MANIFESTATIONS ── */
-.manifest-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px 6px;
-  margin-top: 5px;
-}
-
-.manifest-card {
-  background: #FFF;
-  border: 1px solid rgba(201, 169, 110, 0.2);
-  padding: 4px 6px;
-  border-radius: 2px;
-  position: relative;
-  overflow: hidden;
-}
-
-.manifest-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; width: 2px; height: 100%;
-  background: var(--gold);
-}
-
-.manifest-header {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.manifest-num {
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  font-weight: 900;
-  color: var(--gold);
-  line-height: 1;
-}
-
-.manifest-title {
-  font-family: var(--font-display);
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: var(--burgundy-dark);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.manifest-desc {
-  font-family: var(--font-serif);
-  font-size: 0.68rem;
-  color: #444;
-  line-height: 1.25;
-  margin-top: 2px;
-}
-
-.horoscope-card {
-  background: #FFF;
-  border: 1px solid rgba(201, 169, 110, 0.3);
-  padding: 6px 8px;
-  border-radius: 2px;
-  margin-top: 6px;
-  text-align: center;
-}
-
-/* ── CLOSING MESSAGE PAGE ── */
-.closing-wrap {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
-  padding: 4px 0;
-  position: relative;
-}
-
-.closing-big-age {
-  font-family: var(--font-display);
-  font-size: 4.4rem;
-  font-weight: 900;
-  color: var(--gold);
-  opacity: 0.14;
-  line-height: 0.75;
-  margin-bottom: -0.9rem;
-  letter-spacing: -2px;
-}
-
-.closing-letter {
-  font-family: var(--font-serif);
-  font-size: 0.92rem;
-  line-height: 1.5;
-  color: var(--charcoal);
-  max-width: 320px;
-  margin: 8px auto;
-}
-
-.closing-heart {
-  font-size: 1.4rem;
-  color: var(--wine);
-  margin: 5px 0;
-  animation: pulseHeart 1.4s infinite ease-in-out;
-}
-
-@keyframes pulseHeart {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.18); }
-}
-
-.closing-signature {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 0.82rem;
-  color: var(--burgundy);
-}
-
-/* Bottom Magazine Controls Bar */
-.bottom-nav-bar {
-  position: fixed;
-  bottom: calc(10px + env(safe-area-inset-bottom, 0px));
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  z-index: 999;
-  background: rgba(20, 20, 20, 0.92);
-  backdrop-filter: blur(14px);
-  padding: 5px 14px;
-  border-radius: 30px;
-  border: 1px solid rgba(201, 169, 110, 0.4);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.75);
-}
-
-.nav-pill-btn {
-  background: transparent;
-  border: none;
-  color: #FFF;
-  font-family: var(--font-sans);
-  font-size: 0.46rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 5px 10px;
-  border-radius: 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: all 0.2s ease;
-}
-
-.nav-pill-btn:hover {
-  background: rgba(201, 169, 110, 0.22);
-  color: var(--gold-light);
-}
-
-.nav-pill-btn:disabled {
-  opacity: 0.25;
-  cursor: default;
-}
-
-.nav-page-indicator {
-  font-size: 0.44rem;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  color: var(--gold);
-  white-space: nowrap;
-}
-
-/* Confetti Canvas */
-#confetti-canvas {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-}
-
-/* ============================================================
+    .inner-page-content {
+      padding: 12px 14px 14px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page-top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(201, 169, 110, 0.3);
+      padding-bottom: 4px;
+      margin-bottom: 6px;
+    }
+
+    .back-to-cover-btn {
+      background: var(--burgundy);
+      color: #fff;
+      border: none;
+      font-family: var(--font-sans);
+      font-size: 0.44rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .back-to-cover-btn:hover {
+      background: var(--wine);
+      transform: translateX(-2px);
+    }
+
+    .page-folio {
+      font-size: 0.42rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .editorial-header {
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .ed-eyebrow {
+      font-size: 0.42rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .ed-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--burgundy-dark);
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .ed-title em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      text-transform: none;
+    }
+
+    .ed-subtitle {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.8rem;
+      color: var(--wine);
+      opacity: 0.85;
+      margin-top: 1px;
+    }
+
+    .ed-rule {
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      margin: 5px auto 0;
+    }
+
+    .editorial-pullquote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.88rem;
+      line-height: 1.35;
+      color: var(--wine);
+      text-align: center;
+      border-top: 1px solid rgba(201, 169, 110, 0.25);
+      border-bottom: 1px solid rgba(201, 169, 110, 0.25);
+      padding: 4px 6px;
+      margin: 5px 0;
+    }
+
+    .photo-frame-wrap {
+      text-align: center;
+      background: #FFF;
+      border: 1px solid rgba(201, 169, 110, 0.35);
+      padding: 4px 4px 3px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      margin: 5px auto;
+      display: inline-block;
+      max-width: 90%;
+      border-radius: 2px;
+    }
+
+    .editorial-portrait-img {
+      max-height: 165px;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+      border-radius: 1px;
+    }
+
+    .photo-caption {
+      font-size: 0.39rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #666;
+      padding: 3px 2px 1px;
+      text-align: center;
+      font-style: italic;
+      line-height: 1.25;
+    }
+
+    /* ── 10 REASONS LIST ── */
+    .reasons-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px 8px;
+      margin-top: 5px;
+    }
+
+    .reason-row {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+      border-bottom: 1px solid rgba(201, 169, 110, 0.18);
+      padding-bottom: 2px;
+    }
+
+    .reason-num {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      min-width: 1.1rem;
+    }
+
+    .reason-desc {
+      font-family: var(--font-serif);
+      font-size: 0.74rem;
+      color: var(--charcoal);
+      line-height: 1.25;
+    }
+
+    /* ── FUN FACTS INTERVIEW GRID ── */
+    .facts-magazine-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
+      margin-top: 5px;
+    }
+
+    .fact-item {
+      background: #FFF;
+      border: 1px solid rgba(201, 169, 110, 0.22);
+      padding: 4px;
+      text-align: center;
+      border-radius: 2px;
+    }
+
+    .fact-item-label {
+      font-size: 0.38rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1px;
+    }
+
+    .fact-item-val {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      line-height: 1.15;
+    }
+
+    .fact-full-card {
+      grid-column: 1 / -1;
+      background: #FFF;
+      border-left: 2px solid var(--gold);
+      border-top: 1px solid rgba(201, 169, 110, 0.22);
+      border-right: 1px solid rgba(201, 169, 110, 0.22);
+      border-bottom: 1px solid rgba(201, 169, 110, 0.22);
+      padding: 5px;
+      text-align: center;
+      margin-top: 2px;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline-track {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-top: 5px;
+    }
+
+    .timeline-track::before {
+      content: '';
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      left: 3px;
+      width: 1px;
+      background: var(--gold);
+    }
+
+    .timeline-node {
+      position: relative;
+      padding-bottom: 6px;
+    }
+
+    .timeline-node::before {
+      content: '';
+      position: absolute;
+      left: -1.1rem;
+      top: 3px;
+      width: 6px;
+      height: 6px;
+      background: var(--wine);
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+    }
+
+    .tl-date {
+      font-size: 0.4rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .tl-title {
+      font-family: var(--font-display);
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      margin: 1px 0;
+    }
+
+    .tl-desc {
+      font-family: var(--font-serif);
+      font-size: 0.74rem;
+      color: #444;
+      line-height: 1.3;
+    }
+
+    /* ── 20 MEMORIES GRID ── */
+    .memories-masonry {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px 5px;
+      margin-top: 5px;
+    }
+
+    .memory-card {
+      background: #FFF;
+      border: 1px solid rgba(201, 169, 110, 0.18);
+      padding: 3px 5px;
+      border-radius: 2px;
+    }
+
+    .mem-num {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 900;
+      color: var(--gold);
+      opacity: 0.85;
+      line-height: 1;
+    }
+
+    .mem-text {
+      font-family: var(--font-serif);
+      font-size: 0.68rem;
+      color: #333;
+      line-height: 1.2;
+      margin-top: 1px;
+    }
+
+    /* ── THE STYLE EDIT & VIBES ── */
+    .vibe-badge-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 6px;
+      margin-top: 5px;
+    }
+
+    .vibe-card {
+      background: #FFF;
+      border: 1px solid rgba(201, 169, 110, 0.22);
+      padding: 4px 6px;
+      border-radius: 2px;
+    }
+
+    .vibe-label {
+      font-size: 0.38rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .vibe-val {
+      font-family: var(--font-serif);
+      font-size: 0.76rem;
+      color: var(--charcoal);
+      font-weight: 600;
+      line-height: 1.2;
+      margin-top: 1px;
+    }
+
+    .playlist-section {
+      background: #FFF;
+      border: 1px solid rgba(201, 169, 110, 0.25);
+      border-radius: 2px;
+      padding: 5px 8px;
+      margin-top: 6px;
+    }
+
+    .playlist-title {
+      font-size: 0.42rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      font-weight: 700;
+      border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+      padding-bottom: 2px;
+      margin-bottom: 3px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .track-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2px 0;
+      border-bottom: 1px dashed rgba(201, 169, 110, 0.15);
+    }
+
+    .track-row:last-child {
+      border-bottom: none;
+    }
+
+    .track-title {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--burgundy-dark);
+    }
+
+    .track-artist {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.65rem;
+      color: #666;
+    }
+
+    /* ── CHAPTER 20 MANIFESTATIONS ── */
+    .manifest-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 6px;
+      margin-top: 5px;
+    }
+
+    .manifest-card {
+      background: #FFF;
+      border: 1px solid rgba(201, 169, 110, 0.2);
+      padding: 4px 6px;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .manifest-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      background: var(--gold);
+    }
+
+    .manifest-header {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .manifest-num {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .manifest-title {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .manifest-desc {
+      font-family: var(--font-serif);
+      font-size: 0.68rem;
+      color: #444;
+      line-height: 1.25;
+      margin-top: 2px;
+    }
+
+    .horoscope-card {
+      background: #FFF;
+      border: 1px solid rgba(201, 169, 110, 0.3);
+      padding: 6px 8px;
+      border-radius: 2px;
+      margin-top: 6px;
+      text-align: center;
+    }
+
+    /* ── CLOSING MESSAGE PAGE ── */
+    .closing-wrap {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+      padding: 4px 0;
+      position: relative;
+    }
+
+    .closing-big-age {
+      font-family: var(--font-display);
+      font-size: 4.4rem;
+      font-weight: 900;
+      color: var(--gold);
+      opacity: 0.14;
+      line-height: 0.75;
+      margin-bottom: -0.9rem;
+      letter-spacing: -2px;
+    }
+
+    .closing-letter {
+      font-family: var(--font-serif);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: var(--charcoal);
+      max-width: 320px;
+      margin: 8px auto;
+    }
+
+    .closing-heart {
+      font-size: 1.4rem;
+      color: var(--wine);
+      margin: 5px 0;
+      animation: pulseHeart 1.4s infinite ease-in-out;
+    }
+
+    @keyframes pulseHeart {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.18);
+      }
+    }
+
+    .closing-signature {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.82rem;
+      color: var(--burgundy);
+    }
+
+    /* Bottom Magazine Controls Bar */
+    .bottom-nav-bar {
+      position: fixed;
+      bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 999;
+      background: rgba(20, 20, 20, 0.92);
+      backdrop-filter: blur(14px);
+      padding: 5px 14px;
+      border-radius: 30px;
+      border: 1px solid rgba(201, 169, 110, 0.4);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.75);
+    }
+
+    .nav-pill-btn {
+      background: transparent;
+      border: none;
+      color: #FFF;
+      font-family: var(--font-sans);
+      font-size: 0.46rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-pill-btn:hover {
+      background: rgba(201, 169, 110, 0.22);
+      color: var(--gold-light);
+    }
+
+    .nav-pill-btn:disabled {
+      opacity: 0.25;
+      cursor: default;
+    }
+
+    .nav-page-indicator {
+      font-size: 0.44rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    /* Confetti Canvas */
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ============================================================
    MOBILE OPTIMIZATION — Android Phones (≤650px)
    ============================================================ */
-@media (max-width: 650px) {
-  #magazine-stage {
-    padding: 4px;
-  }
+    @media (max-width: 650px) {
+      #magazine-stage {
+        padding: 4px;
+      }
 
-  #flipbook-wrapper {
-    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.85));
-  }
+      #flipbook-wrapper {
+        filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.85));
+      }
 
-  .cover-masthead {
-    font-size: 2.1rem;
-    letter-spacing: 1.5px;
-  }
+      .cover-masthead {
+        font-size: 2.1rem;
+        letter-spacing: 1.5px;
+      }
 
-  .cover-masthead-sub {
-    font-size: 0.72rem;
-    letter-spacing: 3px;
-  }
+      .cover-masthead-sub {
+        font-size: 0.72rem;
+        letter-spacing: 3px;
+      }
 
-  .cover-headlines-grid {
-    gap: 6px 8px;
-  }
+      .cover-headlines-grid {
+        gap: 6px 8px;
+      }
 
-  .block-bday-num {
-    font-size: 1.5rem;
-  }
+      .block-bday-num {
+        font-size: 1.5rem;
+      }
 
-  .block-bday-text,
-  .block-yourday-text,
-  .block-gettoknow-text,
-  .block-year-text {
-    font-size: 0.36rem;
-  }
+      .block-bday-text,
+      .block-yourday-text,
+      .block-gettoknow-text,
+      .block-year-text {
+        font-size: 0.36rem;
+      }
 
-  .block-yourday-title {
-    font-size: 0.95rem;
-  }
+      .block-yourday-title {
+        font-size: 0.95rem;
+      }
 
-  .block-gettoknow-title {
-    font-size: 1.05rem;
-  }
+      .block-gettoknow-title {
+        font-size: 1.05rem;
+      }
 
-  .block-reasons-num {
-    font-size: 1.5rem;
-  }
+      .block-reasons-num {
+        font-size: 1.5rem;
+      }
 
-  .inner-page-content {
-    padding: 8px 10px 10px;
-  }
+      .inner-page-content {
+        padding: 8px 10px 10px;
+      }
 
-  .ed-title {
-    font-size: 1.2rem;
-  }
+      .ed-title {
+        font-size: 1.2rem;
+      }
 
-  .ed-subtitle {
-    font-size: 0.72rem;
-  }
+      .ed-subtitle {
+        font-size: 0.72rem;
+      }
 
-  .editorial-pullquote {
-    font-size: 0.78rem;
-    padding: 3px 4px;
-    margin: 4px 0;
-  }
+      .editorial-pullquote {
+        font-size: 0.78rem;
+        padding: 3px 4px;
+        margin: 4px 0;
+      }
 
-  .editorial-portrait-img {
-    max-height: 140px;
-  }
+      .editorial-portrait-img {
+        max-height: 140px;
+      }
 
-  .reason-desc {
-    font-size: 0.65rem;
-  }
+      .reason-desc {
+        font-size: 0.65rem;
+      }
 
-  .reason-num {
-    font-size: 0.78rem;
-  }
+      .reason-num {
+        font-size: 0.78rem;
+      }
 
-  .fact-item-val {
-    font-size: 0.68rem;
-  }
+      .fact-item-val {
+        font-size: 0.68rem;
+      }
 
-  .tl-title {
-    font-size: 0.76rem;
-  }
+      .tl-title {
+        font-size: 0.76rem;
+      }
 
-  .tl-desc {
-    font-size: 0.66rem;
-  }
+      .tl-desc {
+        font-size: 0.66rem;
+      }
 
-  .mem-text {
-    font-size: 0.6rem;
-  }
+      .mem-text {
+        font-size: 0.6rem;
+      }
 
-  .mem-num {
-    font-size: 0.78rem;
-  }
+      .mem-num {
+        font-size: 0.78rem;
+      }
 
-  .memories-masonry {
-    gap: 2px 4px;
-  }
+      .memories-masonry {
+        gap: 2px 4px;
+      }
 
-  .memory-card {
-    padding: 2px 4px;
-  }
+      .memory-card {
+        padding: 2px 4px;
+      }
 
-  .vibe-val {
-    font-size: 0.68rem;
-  }
+      .vibe-val {
+        font-size: 0.68rem;
+      }
 
-  .manifest-desc {
-    font-size: 0.6rem;
-  }
+      .manifest-desc {
+        font-size: 0.6rem;
+      }
 
-  .closing-big-age {
-    font-size: 3.4rem;
-  }
+      .closing-big-age {
+        font-size: 3.4rem;
+      }
 
-  .closing-letter {
-    font-size: 0.82rem;
-    max-width: 280px;
-  }
+      .closing-letter {
+        font-size: 0.82rem;
+        max-width: 280px;
+      }
 
-  .bottom-nav-bar {
-    bottom: calc(6px + env(safe-area-inset-bottom, 0px));
-    padding: 4px 10px;
-    gap: 6px;
-  }
+      .bottom-nav-bar {
+        bottom: calc(6px + env(safe-area-inset-bottom, 0px));
+        padding: 4px 10px;
+        gap: 6px;
+      }
 
-  .nav-pill-btn {
-    font-size: 0.42rem;
-    padding: 4px 8px;
-  }
+      .nav-pill-btn {
+        font-size: 0.42rem;
+        padding: 4px 8px;
+      }
 
-  .nav-page-indicator {
-    font-size: 0.4rem;
-  }
+      .nav-page-indicator {
+        font-size: 0.4rem;
+      }
 
-  .back-to-cover-btn {
-    font-size: 0.4rem;
-    padding: 3px 8px;
-  }
+      .back-to-cover-btn {
+        font-size: 0.4rem;
+        padding: 3px 8px;
+      }
 
-  .page-folio {
-    font-size: 0.38rem;
-  }
-}
-</style>
+      .page-folio {
+        font-size: 0.38rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="ambient-bg"></div>
-<canvas id="confetti-canvas"></canvas>
+  <div class="ambient-bg"></div>
+  <canvas id="confetti-canvas"></canvas>
 
-<!-- Top Magazine Interactive Stage -->
-<div id="magazine-stage">
-  <div id="flipbook-wrapper">
-    <div id="flipbook">
+  <!-- Top Magazine Interactive Stage -->
+  <div id="magazine-stage">
+    <div id="flipbook-wrapper">
+      <div id="flipbook">
 
-      <!-- ========================================================
+        <!-- ========================================================
            PAGE 0: LUXURY VOGUE COVER (FRONT)
            ======================================================== -->
-      <div class="mag-page cover-page page-right" data-density="hard">
-        <div class="page-spine-shadow"></div>
+        <div class="mag-page cover-page page-right" data-density="hard">
+          <div class="page-spine-shadow"></div>
 
-        <!-- Featured Portrait Photo -->
-        <img class="cover-hero-img" src="images/cover.jpg" alt="Magazine Cover Star">
-        <div class="cover-vignette"></div>
+          <!-- Featured Portrait Photo -->
+          <img class="cover-hero-img" src="images/cover.jpg" alt="Magazine Cover Star">
+          <div class="cover-vignette"></div>
 
-        <div class="cover-content">
-          <div class="cover-top-tag">A SPECIAL EDITION FOR SOMEONE SPECIAL</div>
+          <div class="cover-content">
+            <div class="cover-top-tag">A SPECIAL EDITION FOR SOMEONE SPECIAL</div>
 
-          <div class="cover-masthead-wrap">
-            <div class="cover-masthead">BIRTHDAY</div>
-            <div class="cover-masthead-sub">MAGAZINE</div>
-          </div>
-
-          <!-- Clickable Cover Headlines -->
-          <div class="cover-headlines-grid">
-            <!-- 20 Birthday -> Flips to Birthday Decree (Page 7) -->
-            <button class="cover-block-btn" onclick="goToPage(7)" aria-label="Open Birthday Page">
-              <span class="block-bday-num">20</span>
-              <span class="block-bday-title">BIRTHDAY</span>
-              <span class="block-bday-text">A CELEBRATION OF YOU & EVERYTHING THAT MAKES YOU EXTRAORDINARY.</span>
-              <div class="block-rule"></div>
-            </button>
-
-            <!-- It's Your Day -> Flips to Memories (Page 4) -->
-            <button class="cover-block-btn block-yourday" onclick="goToPage(4)" aria-label="Open Memories">
-              <span class="block-yourday-title">IT'S YOUR<br>DAY!</span>
-              <span class="block-yourday-text">CELEBRATING<br>YOU TODAY<br>& ALWAYS.</span>
-              <div class="block-rule" style="margin-left: auto;"></div>
-            </button>
-
-            <!-- Get To Know -> Flips to Interview (Page 2) -->
-            <button class="cover-block-btn" onclick="goToPage(2)" aria-label="Open Interview">
-              <span class="block-gettoknow-title">GET TO<br>KNOW</span>
-              <span class="block-gettoknow-text">THE REAL YOU,<br>BEAUTIFULLY TOLD.</span>
-              <div class="block-rule"></div>
-            </button>
-
-            <!-- 10 Reasons -> Flips to 10 Reasons (Page 1) -->
-            <button class="cover-block-btn block-reasons" onclick="goToPage(1)" aria-label="Open 10 Reasons">
-              <span class="block-reasons-num">10</span>
-              <span class="block-reasons-text">REASONS<br>YOU ARE<br>AMAZING</span>
-              <div class="block-rule" style="margin-left: auto;"></div>
-              <span class="block-edition-tag">OCTOBER EDITION</span>
-            </button>
-
-            <!-- 2026 / Our Story -> Flips to Timeline (Page 3) -->
-            <button class="cover-block-btn" onclick="goToPage(3)" aria-label="Open Our Story">
-              <span class="block-year-num">2026</span>
-              <span class="block-year-text">YOUR YEAR.<br>YOUR STORY.<br>YOUR MOMENTS.</span>
-              <div class="block-rule"></div>
-            </button>
-
-            <!-- The Lookbook & Style Edit -> Flips to Lookbook (Page 5) -->
-            <button class="cover-block-btn block-yourday" onclick="goToPage(5)" aria-label="Open Lookbook">
-              <span class="block-edition-tag" style="font-size: 0.44rem; letter-spacing: 2px;">LOOKBOOK</span>
-              <span class="block-yourday-text" style="margin-top: 1px; line-height: 1.25;">THE STYLE EDIT<br>&amp; VIBES &rarr;</span>
-              <div class="block-rule" style="margin-left: auto;"></div>
-            </button>
-          </div>
-
-          <!-- Bottom Bar -->
-          <div class="cover-footer-wrap">
-            <div class="cover-tagline">MEMORIES &bull; MOMENTS &bull; MILESTONES</div>
-            <div class="barcode-box">
-              <div class="barcode-lines">
-                <div class="bc-bar" style="width:2px;"></div>
-                <div class="bc-bar" style="width:1px;"></div>
-                <div class="bc-bar" style="width:3px;"></div>
-                <div class="bc-bar" style="width:1px;"></div>
-                <div class="bc-bar" style="width:2px;"></div>
-                <div class="bc-bar" style="width:1px;"></div>
-                <div class="bc-bar" style="width:3px;"></div>
-                <div class="bc-bar" style="width:2px;"></div>
-                <div class="bc-bar" style="width:1px;"></div>
-                <div class="bc-bar" style="width:2px;"></div>
-              </div>
-              <span class="barcode-num">9 772026 10020</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ========================================================
-           PAGE 1: SPREAD 1 (LEFT) — "10 REASONS YOU ARE AMAZING"
-           ======================================================== -->
-      <div class="mag-page page-left" data-density="soft">
-        <div class="page-spine-shadow"></div>
-        <div class="inner-page-content">
-          <div class="page-top-nav">
-            <button class="back-to-cover-btn" onclick="goToPage(0)">&#8592; Cover</button>
-            <div class="page-folio">Issue No. 20 &bull; Page 1</div>
-          </div>
-
-          <div class="editorial-header">
-            <span class="ed-eyebrow">EXCLUSIVE FEATURE</span>
-            <h2 class="ed-title">10 Reasons You Are <em>Amazing</em></h2>
-            <p class="ed-subtitle">Because the world deserves to celebrate every part of you</p>
-            <div class="ed-rule"></div>
-          </div>
-
-          <div class="editorial-pullquote">
-            &ldquo;You don't just light up a room &mdash; you make everyone feel like they belong.&rdquo;
-          </div>
-
-          <!-- Photo from upload (Funny/Cute with pet!) - UNCROPPED -->
-          <div style="text-align: center;">
-            <div class="photo-frame-wrap">
-              <img src="images/photo_fun.jpg" alt="Unfiltered Happiness" class="editorial-portrait-img">
-              <div class="photo-caption">Exhibit A: Pure, unscripted happiness & infectious energy</div>
-            </div>
-          </div>
-
-          <!-- 2-column layout -->
-          <div class="reasons-two-col">
-            <div class="reason-row"><span class="reason-num">01</span><span class="reason-desc">Contagious laughter that rescues any rough day.</span></div>
-            <div class="reason-row"><span class="reason-num">06</span><span class="reason-desc">Bravery when facing new challenges.</span></div>
-            <div class="reason-row"><span class="reason-num">02</span><span class="reason-desc">Loving fearlessly and defending your people.</span></div>
-            <div class="reason-row"><span class="reason-num">07</span><span class="reason-desc">Making ordinary grocery runs feel like adventures.</span></div>
-            <div class="reason-row"><span class="reason-num">03</span><span class="reason-desc">Effortless style in oversized hoodies or runway fits.</span></div>
-            <div class="reason-row"><span class="reason-num">08</span><span class="reason-desc">A huge heart for all living creatures.</span></div>
-            <div class="reason-row"><span class="reason-num">04</span><span class="reason-desc">Intuition &mdash; always sensing when someone needs a hug.</span></div>
-            <div class="reason-row"><span class="reason-num">09</span><span class="reason-desc">Staying unapologetically, authentically yourself.</span></div>
-            <div class="reason-row"><span class="reason-num">05</span><span class="reason-desc">Natural wit and iconic commentary.</span></div>
-            <div class="reason-row"><span class="reason-num">10</span><span class="reason-desc">Having you in my life makes everything 100x sweeter.</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ========================================================
-           PAGE 2: SPREAD 1 (RIGHT) — "GET TO KNOW THE REAL YOU"
-           ======================================================== -->
-      <div class="mag-page page-right" data-density="soft">
-        <div class="page-spine-shadow"></div>
-        <div class="inner-page-content">
-          <div class="page-top-nav">
-            <div class="page-folio">The Profile &bull; Page 2</div>
-            <button class="back-to-cover-btn" onclick="goToPage(0)">&#8592; Cover</button>
-          </div>
-
-          <div class="editorial-header">
-            <span class="ed-eyebrow">THE PROFILE</span>
-            <h2 class="ed-title">Get To Know<br>The Real <em>You</em></h2>
-            <p class="ed-subtitle">An intimate look at the girl behind the glow</p>
-            <div class="ed-rule"></div>
-          </div>
-
-          <!-- Photo from upload (Cute pajamas smile) - UNCROPPED -->
-          <div style="text-align: center;">
-            <div class="photo-frame-wrap">
-              <img src="images/photo_cute.jpg" alt="Iconic Portrait" class="editorial-portrait-img">
-              <div class="photo-caption">&ldquo;Peace of mind, comfy vibes, and unmatched cuteness.&rdquo;</div>
-            </div>
-          </div>
-
-          <div class="facts-magazine-grid">
-            <div class="fact-item"><div class="fact-item-label">Zodiac Sign</div><div class="fact-item-val">Iconic Energy</div></div>
-            <div class="fact-item"><div class="fact-item-label">Love Language</div><div class="fact-item-val">Quality Time</div></div>
-            <div class="fact-item"><div class="fact-item-label">Comfort Food</div><div class="fact-item-val">Late-Night Snacks</div></div>
-            <div class="fact-item"><div class="fact-item-label">Superpower</div><div class="fact-item-val">Effortless Charm</div></div>
-            <div class="fact-item"><div class="fact-item-label">Guilty Pleasure</div><div class="fact-item-val">Endless TikToks</div></div>
-            <div class="fact-item"><div class="fact-item-label">Most Likely To</div><div class="fact-item-val">Steal Hearts</div></div>
-
-            <div class="fact-full-card">
-              <div class="fact-item-label">IN HER OWN WORDS</div>
-              <div style="font-family: var(--font-serif); font-style: italic; font-size: 0.95rem; color: var(--burgundy-dark); line-height: 1.35; margin-top: 2px;">
-                &ldquo;Living for the sweet moments, loudest laughs, and best memories.&rdquo;
-              </div>
-            </div>
-          </div>
-
-          <div class="editorial-pullquote" style="margin-top: 8px;">
-            &ldquo;A gentle breeze and an unstoppable storm &mdash; completely unforgettable.&rdquo;
-          </div>
-        </div>
-      </div>
-
-      <!-- ========================================================
-           PAGE 3: SPREAD 2 (LEFT) — "OUR STORY — MILESTONES"
-           ======================================================== -->
-      <div class="mag-page page-left" data-density="soft">
-        <div class="page-spine-shadow"></div>
-        <div class="inner-page-content">
-          <div class="page-top-nav">
-            <button class="back-to-cover-btn" onclick="goToPage(0)">&#8592; Cover</button>
-            <div class="page-folio">Retrospective &bull; Page 3</div>
-          </div>
-
-          <div class="editorial-header">
-            <span class="ed-eyebrow">OUR JOURNEY</span>
-            <h2 class="ed-title">Our Story</h2>
-            <p class="ed-subtitle">Moments, memories, milestones & everything in between</p>
-            <div class="ed-rule"></div>
-          </div>
-
-          <!-- Photo from upload (Snapchat screen) - UNCROPPED -->
-          <div style="text-align: center;">
-            <div class="photo-frame-wrap">
-              <img src="images/photo_snap.jpg" alt="Candid Moments" class="editorial-portrait-img" style="max-height: 175px;">
-              <div class="photo-caption">Archived candid memories: screenshots that last forever</div>
-            </div>
-          </div>
-
-          <div class="timeline-track">
-            <div class="timeline-node">
-              <div class="tl-date">Chapter I &bull; The Spark</div>
-              <div class="tl-title">The First Hello</div>
-              <div class="tl-desc">The moment our paths crossed and the universe shifted just a little bit for the better.</div>
+            <div class="cover-masthead-wrap">
+              <div class="cover-masthead">BIRTHDAY</div>
+              <div class="cover-masthead-sub">MAGAZINE</div>
             </div>
 
-            <div class="timeline-node">
-              <div class="tl-date">Chapter II &bull; Midnight Talks</div>
-              <div class="tl-title">Hours Turning Into Minutes</div>
-              <div class="tl-desc">Late-night conversations where dreams were whispered and silence was never awkward.</div>
-            </div>
+            <!-- Clickable Cover Headlines -->
+            <div class="cover-headlines-grid">
+              <!-- 20 Birthday -> Flips to Birthday Decree (Page 7) -->
+              <button class="cover-block-btn" onclick="goToPage(7)" aria-label="Open Birthday Page">
+                <span class="block-bday-num">20</span>
+                <span class="block-bday-title">BIRTHDAY</span>
+                <span class="block-bday-text">A CELEBRATION OF YOU & EVERYTHING THAT MAKES YOU EXTRAORDINARY.</span>
+                <div class="block-rule"></div>
+              </button>
 
-            <div class="timeline-node">
-              <div class="tl-date">Chapter III &bull; Inside Jokes</div>
-              <div class="tl-title">A Language Only We Speak</div>
-              <div class="tl-desc">All the nicknames and eye-contacts across a room that made us burst out laughing.</div>
-            </div>
-          </div>
-        </div>
-      </div>
+              <!-- It's Your Day -> Flips to Memories (Page 4) -->
+              <button class="cover-block-btn block-yourday" onclick="goToPage(4)" aria-label="Open Memories">
+                <span class="block-yourday-title">IT'S YOUR<br>DAY!</span>
+                <span class="block-yourday-text">CELEBRATING<br>YOU TODAY<br>& ALWAYS.</span>
+                <div class="block-rule" style="margin-left: auto;"></div>
+              </button>
 
-      <!-- ========================================================
-           PAGE 4: SPREAD 2 (RIGHT) — "20 YEARS, 20 MEMORIES"
-           ======================================================== -->
-      <div class="mag-page page-right" data-density="soft">
-        <div class="page-spine-shadow"></div>
-        <div class="inner-page-content">
-          <div class="page-top-nav">
-            <div class="page-folio">The Archive &bull; Page 4</div>
-            <button class="back-to-cover-btn" onclick="goToPage(0)">&#8592; Cover</button>
-          </div>
+              <!-- Get To Know -> Flips to Interview (Page 2) -->
+              <button class="cover-block-btn" onclick="goToPage(2)" aria-label="Open Interview">
+                <span class="block-gettoknow-title">GET TO<br>KNOW</span>
+                <span class="block-gettoknow-text">THE REAL YOU,<br>BEAUTIFULLY TOLD.</span>
+                <div class="block-rule"></div>
+              </button>
 
-          <div class="editorial-header">
-            <span class="ed-eyebrow">THE ARCHIVE</span>
-            <h2 class="ed-title">20 Years,<br>20 <em>Memories</em></h2>
-            <p class="ed-subtitle">One token of love for every chapter lived</p>
-            <div class="ed-rule"></div>
-          </div>
+              <!-- 10 Reasons -> Flips to 10 Reasons (Page 1) -->
+              <button class="cover-block-btn block-reasons" onclick="goToPage(1)" aria-label="Open 10 Reasons">
+                <span class="block-reasons-num">10</span>
+                <span class="block-reasons-text">REASONS<br>YOU ARE<br>AMAZING</span>
+                <div class="block-rule" style="margin-left: auto;"></div>
+                <span class="block-edition-tag">OCTOBER EDITION</span>
+              </button>
 
-          <div class="editorial-pullquote">
-            &ldquo;Twenty years of making this world infinitely more colorful.&rdquo;
-          </div>
+              <!-- 2026 / Our Story -> Flips to Timeline (Page 3) -->
+              <button class="cover-block-btn" onclick="goToPage(3)" aria-label="Open Our Story">
+                <span class="block-year-num">2026</span>
+                <span class="block-year-text">YOUR YEAR.<br>YOUR STORY.<br>YOUR MOMENTS.</span>
+                <div class="block-rule"></div>
+              </button>
 
-          <div class="memories-masonry">
-            <div class="memory-card"><div class="mem-num">01</div><div class="mem-text">The day you arrived and the world got brighter.</div></div>
-            <div class="memory-card"><div class="mem-num">11</div><div class="mem-text">Deep late-night dreamer talks.</div></div>
-            <div class="memory-card"><div class="mem-num">02</div><div class="mem-text">Your first big toothless grin.</div></div>
-            <div class="memory-card"><div class="mem-num">12</div><div class="mem-text">Finding your personal style and owning every room.</div></div>
-            <div class="memory-card"><div class="mem-num">03</div><div class="mem-text">Exploring every corner with fearless curiosity.</div></div>
-            <div class="memory-card"><div class="mem-num">13</div><div class="mem-text">Surviving teenage drama with grace and wit.</div></div>
-            <div class="memory-card"><div class="mem-num">04</div><div class="mem-text">Tiny hands holding on with pure trust.</div></div>
-            <div class="memory-card"><div class="mem-num">14</div><div class="mem-text">Unfiltered giggles until our stomachs ached.</div></div>
-            <div class="memory-card"><div class="mem-num">05</div><div class="mem-text">School days & playground adventures.</div></div>
-            <div class="memory-card"><div class="mem-num">15</div><div class="mem-text">Milestone birthdays surrounded by love.</div></div>
-            <div class="memory-card"><div class="mem-num">06</div><div class="mem-text">Singing songs at the top of your lungs in the car.</div></div>
-            <div class="memory-card"><div class="mem-num">16</div><div class="mem-text">Sweet sixteen confidence blossoming.</div></div>
-            <div class="memory-card"><div class="mem-num">07</div><div class="mem-text">Discovering your favorite books, music and movies.</div></div>
-            <div class="memory-card"><div class="mem-num">17</div><div class="mem-text">Proving your inner strength quietly.</div></div>
-            <div class="memory-card"><div class="mem-num">08</div><div class="mem-text">Baking experiments that ended in kitchen messes.</div></div>
-            <div class="memory-card"><div class="mem-num">18</div><div class="mem-text">Stepping into adulthood with courage.</div></div>
-            <div class="memory-card"><div class="mem-num">09</div><div class="mem-text">Fierce loyalty to your friends through thick & thin.</div></div>
-            <div class="memory-card"><div class="mem-num">19</div><div class="mem-text">Chasing dreams and building your future.</div></div>
-            <div class="memory-card"><div class="mem-num">10</div><div class="mem-text">Entering double digits with a golden personality.</div></div>
-            <div class="memory-card"><div class="mem-num">20</div><div class="mem-text">Right now: standing tall at 20 & irreplaceable.</div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ========================================================
-           PAGE 5: SPREAD 3 (LEFT) — "THE STYLE EDIT — LOOKBOOK"
-           ======================================================== -->
-      <div class="mag-page page-left" data-density="soft">
-        <div class="page-spine-shadow"></div>
-        <div class="inner-page-content">
-          <div class="page-top-nav">
-            <button class="back-to-cover-btn" onclick="goToPage(0)">&#8592; Cover</button>
-            <div class="page-folio">Lookbook &bull; Page 5</div>
-          </div>
-
-          <div class="editorial-header">
-            <span class="ed-eyebrow">VOGUE LOOKBOOK</span>
-            <h2 class="ed-title">Streetwear Chic &amp;<br>Golden <em>Energy</em></h2>
-            <p class="ed-subtitle">Effortless style, casual royalty &amp; unmatched aura</p>
-            <div class="ed-rule"></div>
-          </div>
-
-          <!-- Photo from upload (Teddy bear navy tee outdoor portrait) - UNCROPPED -->
-          <div style="text-align: center;">
-            <div class="photo-frame-wrap">
-              <img src="images/photo_bear.jpg" alt="Streetwear Chic" class="editorial-portrait-img" style="max-height: 165px;">
-              <div class="photo-caption">Exhibit B: Casual streetwear perfection &amp; the warmest natural smile</div>
-            </div>
-          </div>
-
-          <div class="vibe-badge-grid">
-            <div class="vibe-card">
-              <div class="vibe-label">The Aura</div>
-              <div class="vibe-val">Warm Honey &amp; Golden Hour ✨</div>
-            </div>
-            <div class="vibe-card">
-              <div class="vibe-label">Signature Vibe</div>
-              <div class="vibe-val">Calm, witty &amp; quietly iconic</div>
-            </div>
-            <div class="vibe-card">
-              <div class="vibe-label">Go-To Fit</div>
-              <div class="vibe-val">Oversized tees &amp; effortless drip</div>
-            </div>
-            <div class="vibe-card">
-              <div class="vibe-label">Comfort Order</div>
-              <div class="vibe-val">Iced Caramel Latte + sweet treats</div>
-            </div>
-          </div>
-
-          <div class="playlist-section">
-            <div class="playlist-title">
-              <span>&#9835; The Life Soundtrack</span>
-              <span style="font-size: 0.36rem; color: var(--gold);">&#9654; ON REPEAT</span>
-            </div>
-            <div class="track-row">
-              <span class="track-title">Golden</span>
-              <span class="track-artist">Harry Styles</span>
-            </div>
-            <div class="track-row">
-              <span class="track-title">Bejeweled</span>
-              <span class="track-artist">Taylor Swift</span>
-            </div>
-            <div class="track-row">
-              <span class="track-title">Good Days</span>
-              <span class="track-artist">SZA</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ========================================================
-           PAGE 6: SPREAD 3 (RIGHT) — "CHAPTER 20 FORECAST"
-           ======================================================== -->
-      <div class="mag-page page-right" data-density="soft">
-        <div class="page-spine-shadow"></div>
-        <div class="inner-page-content">
-          <div class="page-top-nav">
-            <div class="page-folio">The Horizon &bull; Page 6</div>
-            <button class="back-to-cover-btn" onclick="goToPage(0)">&#8592; Cover</button>
-          </div>
-
-          <div class="editorial-header">
-            <span class="ed-eyebrow">THE TWENTIES ERA</span>
-            <h2 class="ed-title">Future Forecast &amp;<br><em>Manifestations</em></h2>
-            <p class="ed-subtitle">Everything written in the stars for this unforgettable chapter</p>
-            <div class="ed-rule"></div>
-          </div>
-
-          <div class="editorial-pullquote">
-            &ldquo;May your twenties bring spontaneous adventures, uncontrollable laughter, and dreams turning into everyday reality.&rdquo;
-          </div>
-
-          <div class="manifest-grid">
-            <div class="manifest-card">
-              <div class="manifest-header">
-                <span class="manifest-num">I</span>
-                <span class="manifest-title">Stamp The Passport</span>
-              </div>
-              <p class="manifest-desc">Watching foreign sunsets and collecting ticket stubs.</p>
-            </div>
-
-            <div class="manifest-card">
-              <div class="manifest-header">
-                <span class="manifest-num">II</span>
-                <span class="manifest-title">Hidden Cafes</span>
-              </div>
-              <p class="manifest-desc">Cozy corner booths, iced drinks &amp; soulful conversations.</p>
-            </div>
-
-            <div class="manifest-card">
-              <div class="manifest-header">
-                <span class="manifest-num">III</span>
-                <span class="manifest-title">Unapologetic Glow</span>
-              </div>
-              <p class="manifest-desc">Walking into every room knowing your worth &amp; owning it.</p>
-            </div>
-
-            <div class="manifest-card">
-              <div class="manifest-header">
-                <span class="manifest-num">IV</span>
-                <span class="manifest-title">Concert Nights</span>
-              </div>
-              <p class="manifest-desc">Screaming lyrics at the top of your lungs with best friends.</p>
-            </div>
-
-            <div class="manifest-card">
-              <div class="manifest-header">
-                <span class="manifest-num">V</span>
-                <span class="manifest-title">Candid Memories</span>
-              </div>
-              <p class="manifest-desc">Thousands of polaroids, blurry laughs &amp; lifelong stories.</p>
-            </div>
-
-            <div class="manifest-card">
-              <div class="manifest-header">
-                <span class="manifest-num">VI</span>
-                <span class="manifest-title">Peace &amp; Growth</span>
-              </div>
-              <p class="manifest-desc">Choosing joy with zero guilt &amp; blossoming into your best self.</p>
-            </div>
-          </div>
-
-          <div class="horoscope-card">
-            <div style="font-size: 0.38rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 2px;">
-              COSMIC BIRTHDAY READING &bull; CHAPTER 20
-            </div>
-            <div style="font-family: var(--font-serif); font-style: italic; font-size: 0.78rem; color: var(--burgundy-dark); line-height: 1.3;">
-              &ldquo;The stars indicate a magnetic year ahead &mdash; full of genuine love, creative breakthroughs, and unstoppable glow.&rdquo;
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ========================================================
-           PAGE 7: SPREAD 4 / FINALE (LEFT / BACK) — BIRTHDAY DECREE
-           ======================================================== -->
-      <div class="mag-page finale-page page-left" data-density="hard">
-        <div class="page-spine-shadow"></div>
-        <div class="inner-page-content">
-          <div class="page-top-nav">
-            <button class="back-to-cover-btn" onclick="goToPage(0)">&#8592; Cover</button>
-            <div class="page-folio">Grand Finale &bull; Page 7</div>
-          </div>
-
-          <div class="closing-wrap">
-            <div class="closing-big-age">20</div>
-
-            <span class="ed-eyebrow" style="margin-bottom: 2px;">OFFICIAL BIRTHDAY DECREE</span>
-            <h2 class="ed-title" style="font-size: 1.85rem;">Happy 20th<br><em>Birthday!</em></h2>
-
-            <div class="ed-rule"></div>
-
-            <div class="closing-letter">
-              <p style="margin-bottom: 8px;">
-                Entering your twenties is a milestone worthy of its own front page. May this decade bring you adventures that take your breath away, laughter that shakes your soul, and dreams that turn into reality.
-              </p>
-              <p>
-                Never forget how radiant, strong, and deeply cherished you are &mdash; today, tomorrow, and through all the years yet to be written.
-              </p>
-            </div>
-
-            <div class="closing-heart">&hearts;</div>
-
-            <div class="closing-signature">
-              With all my love & infinite admiration,<br>
-              <strong style="color: var(--burgundy-dark); font-size: 0.98rem; letter-spacing: 1px;">Always & Forever</strong>
-            </div>
-
-            <div style="margin-top: 10px;">
-              <button class="back-to-cover-btn" onclick="goToPage(0)" style="display: inline-flex;">
-                &#8592; Re-read from Cover
+              <!-- The Lookbook & Style Edit -> Flips to Lookbook (Page 5) -->
+              <button class="cover-block-btn block-yourday" onclick="goToPage(5)" aria-label="Open Lookbook">
+                <span class="block-edition-tag" style="font-size: 0.44rem; letter-spacing: 2px;">LOOKBOOK</span>
+                <span class="block-yourday-text" style="margin-top: 1px; line-height: 1.25;">THE STYLE EDIT<br>&amp;
+                  VIBES &rarr;</span>
+                <div class="block-rule" style="margin-left: auto;"></div>
               </button>
             </div>
 
-            <div style="margin-top: 12px; padding-top: 6px; border-top: 1px solid rgba(201, 169, 110, 0.25); text-align: center; width: 100%;">
-              <div style="font-size: 0.38rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 700;">
-                VOGUE SPECIAL ISSUE NO. 20 &bull; COLLECTOR'S EDITION
-              </div>
-              <div style="font-family: var(--font-serif); font-size: 0.68rem; color: #777; font-style: italic; margin-top: 2px;">
-                Crafted with endless admiration &amp; love &bull; October 2026
+            <!-- Bottom Bar -->
+            <div class="cover-footer-wrap">
+              <div class="cover-tagline">MEMORIES &bull; MOMENTS &bull; MILESTONES</div>
+              <div class="barcode-box">
+                <div class="barcode-lines">
+                  <div class="bc-bar" style="width:2px;"></div>
+                  <div class="bc-bar" style="width:1px;"></div>
+                  <div class="bc-bar" style="width:3px;"></div>
+                  <div class="bc-bar" style="width:1px;"></div>
+                  <div class="bc-bar" style="width:2px;"></div>
+                  <div class="bc-bar" style="width:1px;"></div>
+                  <div class="bc-bar" style="width:3px;"></div>
+                  <div class="bc-bar" style="width:2px;"></div>
+                  <div class="bc-bar" style="width:1px;"></div>
+                  <div class="bc-bar" style="width:2px;"></div>
+                </div>
+                <span class="barcode-num">9 772026 10020</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-    </div><!-- /#flipbook -->
-  </div><!-- /#flipbook-wrapper -->
-</div><!-- /#magazine-stage -->
+        <!-- ========================================================
+           PAGE 1: SPREAD 1 (LEFT) — "10 REASONS YOU ARE AMAZING"
+           ======================================================== -->
+        <div class="mag-page page-left" data-density="soft">
+          <div class="page-spine-shadow"></div>
+          <div class="inner-page-content">
+            <div class="page-top-nav">
+              <button class="back-to-cover-btn" onclick="goToPage(0)">&#8592; Cover</button>
+              <div class="page-folio">Issue No. 20 &bull; Page 1</div>
+            </div>
 
-<!-- Bottom Navigation Bar -->
-<div class="bottom-nav-bar">
-  <button id="btn-prev" class="nav-pill-btn" onclick="safeFlipPrev()">
-    <span>&larr; Prev</span>
-  </button>
+            <div class="editorial-header">
+              <span class="ed-eyebrow">EXCLUSIVE FEATURE</span>
+              <h2 class="ed-title">10 Reasons You Are <em>Amazing</em></h2>
+              <p class="ed-subtitle">Because the world deserves to celebrate every part of you</p>
+              <div class="ed-rule"></div>
+            </div>
 
-  <span id="page-counter" class="nav-page-indicator">Cover</span>
+            <div class="editorial-pullquote">
+              &ldquo;You don't just light up a room you make everyone feel like they belong.&rdquo;
+            </div>
 
-  <button id="btn-next" class="nav-pill-btn" onclick="safeFlipNext()">
-    <span>Next &rarr;</span>
-  </button>
-</div>
+            <!-- Photo from upload (Funny/Cute with pet!) - UNCROPPED -->
+            <div style="text-align: center;">
+              <div class="photo-frame-wrap">
+                <img src="images/photo_fun.jpg" alt="Unfiltered Happiness" class="editorial-portrait-img">
+                <div class="photo-caption">Exhibit A: Pure, unscripted happiness & infectious energy</div>
+              </div>
+            </div>
 
-<!-- ============================================================
+            <!-- 2-column layout -->
+            <div class="reasons-two-col">
+              <div class="reason-row"><span class="reason-num">01</span><span class="reason-desc">You make even the most boring days feel special.</span></div>
+              <div class="reason-row"><span class="reason-num">06</span><span class="reason-desc">You're insanely cute even when you're being angry as fuck 😭</span></div>
+              <div class="reason-row"><span class="reason-num">02</span><span class="reason-desc">You care about people more than you realize.</span></div>
+              <div class="reason-row"><span class="reason-num">07</span><span class="reason-desc">You always manage to make me laugh.</span></div>
+              <div class="reason-row"><span class="reason-num">03</span><span class="reason-desc">Your smile genuinely makes my day better.</span></div>
+              <div class="reason-row"><span class="reason-num">08</span><span class="reason-desc">You're passionate about the things you care about.</span></div>
+              <div class="reason-row"><span class="reason-num">04</span><span class="reason-desc">You're strong even when you don't feel like you are.</span></div>
+              <div class="reason-row"><span class="reason-num">09</span><span class="reason-desc">You make me feel loved in ways you probably don't even notice.</span></div>
+              <div class="reason-row"><span class="reason-num">05</span><span class="reason-desc">You have this way of making me feel comfortable being myself.</span></div>
+              <div class="reason-row"><span class="reason-num">10</span><span class="reason-desc">And honestly you're just you. That's my favorite thing about you.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================================
+           PAGE 2: SPREAD 1 (RIGHT) — "GET TO KNOW THE REAL YOU"
+           ======================================================== -->
+        <div class="mag-page page-right" data-density="soft">
+          <div class="page-spine-shadow"></div>
+          <div class="inner-page-content">
+            <div class="page-top-nav">
+              <div class="page-folio">The Profile &bull; Page 2</div>
+              <button class="back-to-cover-btn" onclick="goToPage(0)">&#8592; Cover</button>
+            </div>
+
+            <div class="editorial-header">
+              <span class="ed-eyebrow">THE PROFILE</span>
+              <h2 class="ed-title">Get To Know<br>The Real <em>You</em></h2>
+              <p class="ed-subtitle">An intimate look at the girl behind the glow</p>
+              <div class="ed-rule"></div>
+            </div>
+
+            <!-- Photo from upload (Cute pajamas smile) - UNCROPPED -->
+            <div style="text-align: center;">
+              <div class="photo-frame-wrap">
+                <img src="images/photo_cute.jpg" alt="Iconic Portrait" class="editorial-portrait-img">
+                <div class="photo-caption">&ldquo;Peace of mind, comfy vibes, and unmatched cuteness.&rdquo;</div>
+              </div>
+            </div>
+
+            <div class="facts-magazine-grid">
+              <div class="fact-item">
+                <div class="fact-item-label">Zodiac Sign</div>
+                <div class="fact-item-val">Iconic Energy</div>
+              </div>
+              <div class="fact-item">
+                <div class="fact-item-label">Love Language</div>
+                <div class="fact-item-val">Quality Time</div>
+              </div>
+              <div class="fact-item">
+                <div class="fact-item-label">Comfort Food</div>
+                <div class="fact-item-val">Late-Night Snacks</div>
+              </div>
+              <div class="fact-item">
+                <div class="fact-item-label">Superpower</div>
+                <div class="fact-item-val">Effortless Charm</div>
+              </div>
+              <div class="fact-item">
+                <div class="fact-item-label">Guilty Pleasure</div>
+                <div class="fact-item-val">Endless TikToks</div>
+              </div>
+              <div class="fact-item">
+                <div class="fact-item-label">Most Likely To</div>
+                <div class="fact-item-val">Steal Hearts</div>
+              </div>
+
+              <div class="fact-full-card">
+                <div class="fact-item-label">IN HER OWN WORDS</div>
+                <div
+                  style="font-family: var(--font-serif); font-style: italic; font-size: 0.95rem; color: var(--burgundy-dark); line-height: 1.35; margin-top: 2px;">
+                  &ldquo;Living for the sweet moments, loudest laughs, and best memories.&rdquo;
+                </div>
+              </div>
+            </div>
+
+            <div class="editorial-pullquote" style="margin-top: 8px;">
+              &ldquo;A gentle breeze and an unstoppable storm &mdash; completely unforgettable.&rdquo;
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================================
+           PAGE 3: SPREAD 2 (LEFT) — "OUR STORY — MILESTONES"
+           ======================================================== -->
+        <div class="mag-page page-left" data-density="soft">
+          <div class="page-spine-shadow"></div>
+          <div class="inner-page-content">
+            <div class="page-top-nav">
+              <button class="back-to-cover-btn" onclick="goToPage(0)">&#8592; Cover</button>
+              <div class="page-folio">Retrospective &bull; Page 3</div>
+            </div>
+
+            <div class="editorial-header">
+              <span class="ed-eyebrow">OUR JOURNEY</span>
+              <h2 class="ed-title">Our Story</h2>
+              <p class="ed-subtitle">Moments, memories, milestones & everything in between</p>
+              <div class="ed-rule"></div>
+            </div>
+
+            <!-- Photo from upload (Snapchat screen) - UNCROPPED -->
+            <div style="text-align: center;">
+              <div class="photo-frame-wrap">
+                <img src="images/photo_snap.jpg" alt="Candid Moments" class="editorial-portrait-img"
+                  style="max-height: 175px;">
+                <div class="photo-caption">Archived candid memories: screenshots that last forever</div>
+              </div>
+            </div>
+
+            <div class="timeline-track">
+              <div class="timeline-node">
+                <div class="tl-date">Chapter I &bull; The Spark</div>
+                <div class="tl-title">The First Hello</div>
+                <div class="tl-desc">The moment our paths crossed and the universe shifted just a little bit for the
+                  better.</div>
+              </div>
+
+              <div class="timeline-node">
+                <div class="tl-date">Chapter II &bull; Midnight Talks</div>
+                <div class="tl-title">Hours Turning Into Minutes</div>
+                <div class="tl-desc">Late-night conversations where dreams were whispered and silence was never awkward.
+                </div>
+              </div>
+
+              <div class="timeline-node">
+                <div class="tl-date">Chapter III &bull; Inside Jokes</div>
+                <div class="tl-title">A Language Only We Speak</div>
+                <div class="tl-desc">All the nicknames and eye-contacts across a room that made us burst out laughing.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================================
+           PAGE 4: SPREAD 2 (RIGHT) — "20 YEARS, 20 MEMORIES"
+           ======================================================== -->
+        <div class="mag-page page-right" data-density="soft">
+          <div class="page-spine-shadow"></div>
+          <div class="inner-page-content">
+            <div class="page-top-nav">
+              <div class="page-folio">The Archive &bull; Page 4</div>
+              <button class="back-to-cover-btn" onclick="goToPage(0)">&#8592; Cover</button>
+            </div>
+
+            <div class="editorial-header">
+              <span class="ed-eyebrow">THE ARCHIVE</span>
+              <h2 class="ed-title">20 Years,<br>20 <em>Memories</em></h2>
+              <p class="ed-subtitle">One token of love for every chapter lived</p>
+              <div class="ed-rule"></div>
+            </div>
+
+            <div class="editorial-pullquote">
+              &ldquo;Twenty years of making this world infinitely more colorful.&rdquo;
+            </div>
+
+            <div class="memories-masonry">
+              <div class="memory-card">
+                <div class="mem-num">01</div>
+                <div class="mem-text">The day you arrived and the world got brighter.</div>
+              </div>
+              <div class="memory-card">
+                <div class="mem-num">11</div>
+                <div class="mem-text">Deep late-night dreamer talks.</div>
+              </div>
+              <div class="memory-card">
+                <div class="mem-num">02</div>
+                <div class="mem-text">Your first big toothless grin.</div>
+              </div>
+              <div class="memory-card">
+                <div class="mem-num">12</div>
+                <div class="mem-text">Finding your personal style and owning every room.</div>
+              </div>
+              <div class="memory-card">
+                <div class="mem-num">03</div>
+                <div class="mem-text">Exploring every corner with fearless curiosity.</div>
+              </div>
+              <div class="memory-card">
+                <div class="mem-num">13</div>
+                <div class="mem-text">Surviving teenage drama with grace and wit.</div>
+              </div>
+              <div class="memory-card">
+                <div class="mem-num">04</div>
+                <div class="mem-text">Tiny hands holding on with pure trust.</div>
+              </div>
+              <div class="memory-card">
+                <div class="mem-num">14</div>
+                <div class="mem-text">Unfiltered giggles until our stomachs ached.</div>
+              </div>
+              <div class="memory-card">
+                <div class="mem-num">05</div>
+                <div class="mem-text">School days & playground adventures.</div>
+              </div>
+              <div class="memory-card">
+                <div class="mem-num">15</div>
+                <div class="mem-text">Milestone birthdays surrounded by love.</div>
+              </div>
+              <div class="memory-card">
+                <div class="mem-num">06</div>
+                <div class="mem-text">Singing songs at the top of your lungs in the car.</div>
+              </div>
+              <div class="memory-card">
+                <div class="mem-num">16</div>
+                <div class="mem-text">Sweet sixteen confidence blossoming.</div>
+              </div>
+              <div class="memory-card">
+                <div class="mem-num">07</div>
+                <div class="mem-text">Discovering your favorite books, music and movies.</div>
+              </div>
+              <div class="memory-card">
+                <div class="mem-num">17</div>
+                <div class="mem-text">Proving your inner strength quietly.</div>
+              </div>
+              <div class="memory-card">
+                <div class="mem-num">08</div>
+                <div class="mem-text">Baking experiments that ended in kitchen messes.</div>
+              </div>
+              <div class="memory-card">
+                <div class="mem-num">18</div>
+                <div class="mem-text">Stepping into adulthood with courage.</div>
+              </div>
+              <div class="memory-card">
+                <div class="mem-num">09</div>
+                <div class="mem-text">Fierce loyalty to your friends through thick & thin.</div>
+              </div>
+              <div class="memory-card">
+                <div class="mem-num">19</div>
+                <div class="mem-text">Chasing dreams and building your future.</div>
+              </div>
+              <div class="memory-card">
+                <div class="mem-num">10</div>
+                <div class="mem-text">Entering double digits with a golden personality.</div>
+              </div>
+              <div class="memory-card">
+                <div class="mem-num">20</div>
+                <div class="mem-text">Right now: standing tall at 20 & irreplaceable.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================================
+           PAGE 5: SPREAD 3 (LEFT) — "THE STYLE EDIT — LOOKBOOK"
+           ======================================================== -->
+        <div class="mag-page page-left" data-density="soft">
+          <div class="page-spine-shadow"></div>
+          <div class="inner-page-content">
+            <div class="page-top-nav">
+              <button class="back-to-cover-btn" onclick="goToPage(0)">&#8592; Cover</button>
+              <div class="page-folio">Lookbook &bull; Page 5</div>
+            </div>
+
+            <div class="editorial-header">
+              <span class="ed-eyebrow">VOGUE LOOKBOOK</span>
+              <h2 class="ed-title">Streetwear Chic &amp;<br>Golden <em>Energy</em></h2>
+              <p class="ed-subtitle">Effortless style, casual royalty &amp; unmatched aura</p>
+              <div class="ed-rule"></div>
+            </div>
+
+            <!-- Photo from upload (Teddy bear navy tee outdoor portrait) - UNCROPPED -->
+            <div style="text-align: center;">
+              <div class="photo-frame-wrap">
+                <img src="images/photo_bear.jpg" alt="Streetwear Chic" class="editorial-portrait-img"
+                  style="max-height: 165px;">
+                <div class="photo-caption">Exhibit B: Casual streetwear perfection &amp; the warmest natural smile</div>
+              </div>
+            </div>
+
+            <div class="vibe-badge-grid">
+              <div class="vibe-card">
+                <div class="vibe-label">The Aura</div>
+                <div class="vibe-val">Warm Honey &amp; Golden Hour ✨</div>
+              </div>
+              <div class="vibe-card">
+                <div class="vibe-label">Signature Vibe</div>
+                <div class="vibe-val">Calm, witty &amp; quietly iconic</div>
+              </div>
+              <div class="vibe-card">
+                <div class="vibe-label">Go-To Fit</div>
+                <div class="vibe-val">Oversized tees &amp; effortless drip</div>
+              </div>
+              <div class="vibe-card">
+                <div class="vibe-label">Comfort Order</div>
+                <div class="vibe-val">Iced Caramel Latte + sweet treats</div>
+              </div>
+            </div>
+
+            <div class="playlist-section">
+              <div class="playlist-title">
+                <span>&#9835; The Life Soundtrack</span>
+                <span style="font-size: 0.36rem; color: var(--gold);">&#9654; ON REPEAT</span>
+              </div>
+              <div class="track-row">
+                <span class="track-title">Golden</span>
+                <span class="track-artist">Harry Styles</span>
+              </div>
+              <div class="track-row">
+                <span class="track-title">Bejeweled</span>
+                <span class="track-artist">Taylor Swift</span>
+              </div>
+              <div class="track-row">
+                <span class="track-title">Good Days</span>
+                <span class="track-artist">SZA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================================
+           PAGE 6: SPREAD 3 (RIGHT) — "CHAPTER 20 FORECAST"
+           ======================================================== -->
+        <div class="mag-page page-right" data-density="soft">
+          <div class="page-spine-shadow"></div>
+          <div class="inner-page-content">
+            <div class="page-top-nav">
+              <div class="page-folio">The Horizon &bull; Page 6</div>
+              <button class="back-to-cover-btn" onclick="goToPage(0)">&#8592; Cover</button>
+            </div>
+
+            <div class="editorial-header">
+              <span class="ed-eyebrow">THE TWENTIES ERA</span>
+              <h2 class="ed-title">Future Forecast &amp;<br><em>Manifestations</em></h2>
+              <p class="ed-subtitle">Everything written in the stars for this unforgettable chapter</p>
+              <div class="ed-rule"></div>
+            </div>
+
+            <div class="editorial-pullquote">
+              &ldquo;May your twenties bring spontaneous adventures, uncontrollable laughter, and dreams turning into
+              everyday reality.&rdquo;
+            </div>
+
+            <div class="manifest-grid">
+              <div class="manifest-card">
+                <div class="manifest-header">
+                  <span class="manifest-num">I</span>
+                  <span class="manifest-title">Stamp The Passport</span>
+                </div>
+                <p class="manifest-desc">Watching foreign sunsets and collecting ticket stubs.</p>
+              </div>
+
+              <div class="manifest-card">
+                <div class="manifest-header">
+                  <span class="manifest-num">II</span>
+                  <span class="manifest-title">Hidden Cafes</span>
+                </div>
+                <p class="manifest-desc">Cozy corner booths, iced drinks &amp; soulful conversations.</p>
+              </div>
+
+              <div class="manifest-card">
+                <div class="manifest-header">
+                  <span class="manifest-num">III</span>
+                  <span class="manifest-title">Unapologetic Glow</span>
+                </div>
+                <p class="manifest-desc">Walking into every room knowing your worth &amp; owning it.</p>
+              </div>
+
+              <div class="manifest-card">
+                <div class="manifest-header">
+                  <span class="manifest-num">IV</span>
+                  <span class="manifest-title">Concert Nights</span>
+                </div>
+                <p class="manifest-desc">Screaming lyrics at the top of your lungs with best friends.</p>
+              </div>
+
+              <div class="manifest-card">
+                <div class="manifest-header">
+                  <span class="manifest-num">V</span>
+                  <span class="manifest-title">Candid Memories</span>
+                </div>
+                <p class="manifest-desc">Thousands of polaroids, blurry laughs &amp; lifelong stories.</p>
+              </div>
+
+              <div class="manifest-card">
+                <div class="manifest-header">
+                  <span class="manifest-num">VI</span>
+                  <span class="manifest-title">Peace &amp; Growth</span>
+                </div>
+                <p class="manifest-desc">Choosing joy with zero guilt &amp; blossoming into your best self.</p>
+              </div>
+            </div>
+
+            <div class="horoscope-card">
+              <div
+                style="font-size: 0.38rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 2px;">
+                COSMIC BIRTHDAY READING &bull; CHAPTER 20
+              </div>
+              <div
+                style="font-family: var(--font-serif); font-style: italic; font-size: 0.78rem; color: var(--burgundy-dark); line-height: 1.3;">
+                &ldquo;The stars indicate a magnetic year ahead &mdash; full of genuine love, creative breakthroughs,
+                and unstoppable glow.&rdquo;
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================================
+           PAGE 7: SPREAD 4 / FINALE (LEFT / BACK) — BIRTHDAY DECREE
+           ======================================================== -->
+        <div class="mag-page finale-page page-left" data-density="hard">
+          <div class="page-spine-shadow"></div>
+          <div class="inner-page-content">
+            <div class="page-top-nav">
+              <button class="back-to-cover-btn" onclick="goToPage(0)">&#8592; Cover</button>
+              <div class="page-folio">Grand Finale &bull; Page 7</div>
+            </div>
+
+            <div class="closing-wrap">
+              <div class="closing-big-age">20</div>
+
+              <span class="ed-eyebrow" style="margin-bottom: 2px;">OFFICIAL BIRTHDAY DECREE</span>
+              <h2 class="ed-title" style="font-size: 1.85rem;">Happy 20th<br><em>Birthday!</em></h2>
+
+              <div class="ed-rule"></div>
+
+              <div class="closing-letter">
+                <p style="margin-bottom: 8px;">
+                  Entering your twenties is a milestone worthy of its own front page. May this decade bring you
+                  adventures that take your breath away, laughter that shakes your soul, and dreams that turn into
+                  reality.
+                </p>
+                <p>
+                  Never forget how radiant, strong, and deeply cherished you are &mdash; today, tomorrow, and through
+                  all the years yet to be written.
+                </p>
+              </div>
+
+              <div class="closing-heart">&hearts;</div>
+
+              <div class="closing-signature">
+                With all my love & infinite admiration,<br>
+                <strong style="color: var(--burgundy-dark); font-size: 0.98rem; letter-spacing: 1px;">Always &
+                  Forever</strong>
+              </div>
+
+              <div style="margin-top: 10px;">
+                <button class="back-to-cover-btn" onclick="goToPage(0)" style="display: inline-flex;">
+                  &#8592; Re-read from Cover
+                </button>
+              </div>
+
+              <div
+                style="margin-top: 12px; padding-top: 6px; border-top: 1px solid rgba(201, 169, 110, 0.25); text-align: center; width: 100%;">
+                <div
+                  style="font-size: 0.38rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 700;">
+                  VOGUE SPECIAL ISSUE NO. 20 &bull; COLLECTOR'S EDITION
+                </div>
+                <div
+                  style="font-family: var(--font-serif); font-size: 0.68rem; color: #777; font-style: italic; margin-top: 2px;">
+                  Crafted with endless admiration &amp; love &bull; October 2026
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /#flipbook -->
+    </div><!-- /#flipbook-wrapper -->
+  </div><!-- /#magazine-stage -->
+
+  <!-- Bottom Navigation Bar -->
+  <div class="bottom-nav-bar">
+    <button id="btn-prev" class="nav-pill-btn" onclick="safeFlipPrev()">
+      <span>&larr; Prev</span>
+    </button>
+
+    <span id="page-counter" class="nav-page-indicator">Cover</span>
+
+    <button id="btn-next" class="nav-pill-btn" onclick="safeFlipNext()">
+      <span>Next &rarr;</span>
+    </button>
+  </div>
+
+  <!-- ============================================================
      STPAGEFLIP SCRIPT
      ============================================================ -->
-<script>
-let flipbook;
-let isAnimatingFlip = false;
+  <script>
+    let flipbook;
+    let isAnimatingFlip = false;
 
-window.addEventListener('DOMContentLoaded', () => {
-  const params = new URLSearchParams(window.location.search);
-  const startP = params.get('page') ? parseInt(params.get('page')) : 0;
-  initMagazine(startP);
-});
-
-// Reinitialize on mobile orientation change
-window.addEventListener('orientationchange', () => {
-  setTimeout(() => {
-    const currentPage = flipbook ? flipbook.getCurrentPageIndex() : 0;
-    window.location.href = window.location.pathname + '?page=' + currentPage;
-  }, 300);
-});
-
-function calculatePageDimensions() {
-  const screenW = window.innerWidth;
-  const screenH = window.innerHeight;
-
-  if (screenW <= 650) {
-    // Android phone / mobile portrait
-    // 1-page full screen so text is large & crisp
-    const pageW = Math.min(screenW - 14, 430);
-    const maxH = screenH - 70;
-    const pageH = Math.min(maxH, Math.round(pageW * 1.5));
-    return { pageW, pageH, usePortrait: true };
-  } else {
-    // Desktop / Tablet / Laptop: 2-PAGE OPEN BOOK SPREAD!
-    const maxH = screenH - 90;
-    const pageH = Math.min(maxH, 590);
-    const pageW = Math.min(420, Math.round(pageH / 1.42));
-    return { pageW, pageH, usePortrait: false };
-  }
-}
-
-function initMagazine(startPage = 0) {
-  const flipContainer = document.getElementById('flipbook');
-  const dims = calculatePageDimensions();
-
-  try {
-    flipbook = new St.PageFlip(flipContainer, {
-      width: dims.pageW,
-      height: dims.pageH,
-      size: "fixed",
-      maxShadowOpacity: 0.65,
-      showCover: true,
-      mobileScrollSupport: true,
-      usePortrait: dims.usePortrait, // false on desktop = 2-page open book! true on mobile
-      flippingTime: 750,
-      drawShadow: true,
-      useMouseEvents: true,
-      showPageCorners: true,
-      swipeDistance: 25,
-      startPage: startPage
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const startP = params.get('page') ? parseInt(params.get('page')) : 0;
+      initMagazine(startP);
     });
 
-    // Load all 8 pages (Cover, Reasons, Interview, Story, Memories, Lookbook, Forecast, Finale)
-    flipbook.loadFromHTML(document.querySelectorAll('.mag-page'));
-
-    flipbook.on('flip', (e) => {
-      updateNav(e.data);
-      if (e.data >= 6) {
-        launchLuxuryConfetti();
-      }
+    // Reinitialize on mobile orientation change
+    window.addEventListener('orientationchange', () => {
+      setTimeout(() => {
+        const currentPage = flipbook ? flipbook.getCurrentPageIndex() : 0;
+        window.location.href = window.location.pathname + '?page=' + currentPage;
+      }, 300);
     });
 
-    flipbook.on('init', () => {
-      updateNav(startPage);
-    });
+    function calculatePageDimensions() {
+      const screenW = window.innerWidth;
+      const screenH = window.innerHeight;
 
-  } catch (err) {
-    console.error("PageFlip init error:", err);
-  }
-}
-
-function updateNav(pageIndex) {
-  const counter = document.getElementById('page-counter');
-  const prevBtn = document.getElementById('btn-prev');
-  const nextBtn = document.getElementById('btn-next');
-
-  const names = [
-    'Cover', 
-    '10 Reasons', 
-    'Interview', 
-    'Our Story', 
-    '20 Memories', 
-    'The Lookbook', 
-    'Future Forecast', 
-    'Birthday Decree'
-  ];
-  
-  if (flipbook && flipbook.getOrientation && flipbook.getOrientation() === 'landscape') {
-    // Open Book 2-Page View
-    if (pageIndex === 0) {
-      counter.textContent = 'Cover';
-    } else if (pageIndex >= 7) {
-      counter.textContent = 'Birthday Finale';
-    } else if (pageIndex <= 2) {
-      counter.textContent = 'Spread 1 (pp. 1-2)';
-    } else if (pageIndex <= 4) {
-      counter.textContent = 'Spread 2 (pp. 3-4)';
-    } else {
-      counter.textContent = 'Spread 3 (pp. 5-6)';
-    }
-  } else {
-    counter.textContent = names[pageIndex] || `Page ${pageIndex + 1}`;
-  }
-
-  prevBtn.disabled = (pageIndex === 0);
-  nextBtn.disabled = (pageIndex >= 7);
-}
-
-// ── SAFE NAVIGATION CONTROLS ────────────────────────────────
-function safeFlipNext() {
-  if (!flipbook || isAnimatingFlip) return;
-  isAnimatingFlip = true;
-  flipbook.flipNext();
-  setTimeout(() => { isAnimatingFlip = false; }, 850);
-}
-
-function safeFlipPrev() {
-  if (!flipbook || isAnimatingFlip) return;
-  isAnimatingFlip = true;
-  flipbook.flipPrev();
-  setTimeout(() => { isAnimatingFlip = false; }, 850);
-}
-
-function goToPage(targetIndex) {
-  if (!flipbook || isAnimatingFlip) return;
-  const currentIndex = flipbook.getCurrentPageIndex();
-  if (currentIndex === targetIndex) return;
-
-  isAnimatingFlip = true;
-  flipbook.flip(targetIndex);
-  setTimeout(() => { isAnimatingFlip = false; }, 850);
-}
-
-// ── KEYBOARD NAVIGATION ─────────────────────────────────────
-document.addEventListener('keydown', (e) => {
-  if (!flipbook) return;
-  if (e.key === 'ArrowRight' || e.key === 'PageDown') {
-    safeFlipNext();
-  } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-    safeFlipPrev();
-  } else if (e.key === 'Escape' || e.key === 'Home') {
-    goToPage(0);
-  }
-});
-
-// ── MOBILE SWIPE GESTURE SUPPORT ────────────────────────────
-let touchStartX = 0;
-let touchStartY = 0;
-let touchStartTime = 0;
-
-document.addEventListener('touchstart', (e) => {
-  if (e.touches.length === 1) {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-    touchStartTime = Date.now();
-  }
-}, { passive: true });
-
-document.addEventListener('touchend', (e) => {
-  if (!flipbook || isAnimatingFlip) return;
-  if (e.changedTouches.length === 1) {
-    const deltaX = e.changedTouches[0].clientX - touchStartX;
-    const deltaY = e.changedTouches[0].clientY - touchStartY;
-    const elapsedTime = Date.now() - touchStartTime;
-
-    if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5 && elapsedTime < 400) {
-      if (deltaX < 0) {
-        safeFlipNext();
+      if (screenW <= 650) {
+        // Android phone / mobile portrait
+        // 1-page full screen so text is large & crisp
+        const pageW = Math.min(screenW - 14, 430);
+        const maxH = screenH - 70;
+        const pageH = Math.min(maxH, Math.round(pageW * 1.5));
+        return { pageW, pageH, usePortrait: true };
       } else {
+        // Desktop / Tablet / Laptop: 2-PAGE OPEN BOOK SPREAD!
+        const maxH = screenH - 90;
+        const pageH = Math.min(maxH, 590);
+        const pageW = Math.min(420, Math.round(pageH / 1.42));
+        return { pageW, pageH, usePortrait: false };
+      }
+    }
+
+    function initMagazine(startPage = 0) {
+      const flipContainer = document.getElementById('flipbook');
+      const dims = calculatePageDimensions();
+
+      try {
+        flipbook = new St.PageFlip(flipContainer, {
+          width: dims.pageW,
+          height: dims.pageH,
+          size: "fixed",
+          maxShadowOpacity: 0.65,
+          showCover: true,
+          mobileScrollSupport: true,
+          usePortrait: dims.usePortrait, // false on desktop = 2-page open book! true on mobile
+          flippingTime: 750,
+          drawShadow: true,
+          useMouseEvents: true,
+          showPageCorners: true,
+          swipeDistance: 25,
+          startPage: startPage
+        });
+
+        // Load all 8 pages (Cover, Reasons, Interview, Story, Memories, Lookbook, Forecast, Finale)
+        flipbook.loadFromHTML(document.querySelectorAll('.mag-page'));
+
+        flipbook.on('flip', (e) => {
+          updateNav(e.data);
+          if (e.data >= 6) {
+            launchLuxuryConfetti();
+          }
+        });
+
+        flipbook.on('init', () => {
+          updateNav(startPage);
+        });
+
+      } catch (err) {
+        console.error("PageFlip init error:", err);
+      }
+    }
+
+    function updateNav(pageIndex) {
+      const counter = document.getElementById('page-counter');
+      const prevBtn = document.getElementById('btn-prev');
+      const nextBtn = document.getElementById('btn-next');
+
+      const names = [
+        'Cover',
+        '10 Reasons',
+        'Interview',
+        'Our Story',
+        '20 Memories',
+        'The Lookbook',
+        'Future Forecast',
+        'Birthday Decree'
+      ];
+
+      if (flipbook && flipbook.getOrientation && flipbook.getOrientation() === 'landscape') {
+        // Open Book 2-Page View
+        if (pageIndex === 0) {
+          counter.textContent = 'Cover';
+        } else if (pageIndex >= 7) {
+          counter.textContent = 'Birthday Finale';
+        } else if (pageIndex <= 2) {
+          counter.textContent = 'Spread 1 (pp. 1-2)';
+        } else if (pageIndex <= 4) {
+          counter.textContent = 'Spread 2 (pp. 3-4)';
+        } else {
+          counter.textContent = 'Spread 3 (pp. 5-6)';
+        }
+      } else {
+        counter.textContent = names[pageIndex] || `Page ${pageIndex + 1}`;
+      }
+
+      prevBtn.disabled = (pageIndex === 0);
+      nextBtn.disabled = (pageIndex >= 7);
+    }
+
+    // ── SAFE NAVIGATION CONTROLS ────────────────────────────────
+    function safeFlipNext() {
+      if (!flipbook || isAnimatingFlip) return;
+      isAnimatingFlip = true;
+      flipbook.flipNext();
+      setTimeout(() => { isAnimatingFlip = false; }, 850);
+    }
+
+    function safeFlipPrev() {
+      if (!flipbook || isAnimatingFlip) return;
+      isAnimatingFlip = true;
+      flipbook.flipPrev();
+      setTimeout(() => { isAnimatingFlip = false; }, 850);
+    }
+
+    function goToPage(targetIndex) {
+      if (!flipbook || isAnimatingFlip) return;
+      const currentIndex = flipbook.getCurrentPageIndex();
+      if (currentIndex === targetIndex) return;
+
+      isAnimatingFlip = true;
+      flipbook.flip(targetIndex);
+      setTimeout(() => { isAnimatingFlip = false; }, 850);
+    }
+
+    // ── KEYBOARD NAVIGATION ─────────────────────────────────────
+    document.addEventListener('keydown', (e) => {
+      if (!flipbook) return;
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+        safeFlipNext();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
         safeFlipPrev();
+      } else if (e.key === 'Escape' || e.key === 'Home') {
+        goToPage(0);
       }
-    }
-  }
-}, { passive: true });
-
-// ── LUXURY CONFETTI CELEBRATION ─────────────────────────────
-function launchLuxuryConfetti() {
-  const canvas = document.getElementById('confetti-canvas');
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  const colors = ['#C9A96E', '#E8D5A8', '#6B1D2A', '#8B2540', '#FAF6F0', '#E2B874', '#FFFFFF'];
-  const particles = [];
-  const count = 90;
-
-  for (let i = 0; i < count; i++) {
-    particles.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * -canvas.height * 0.5,
-      w: 4 + Math.random() * 6,
-      h: 8 + Math.random() * 12,
-      color: colors[Math.floor(Math.random() * colors.length)],
-      rotation: Math.random() * 360,
-      rotationSpeed: (Math.random() - 0.5) * 6,
-      speedX: (Math.random() - 0.5) * 2.5,
-      speedY: 2 + Math.random() * 3.5,
-      opacity: 1
-    });
-  }
-
-  let frames = 0;
-  function animate() {
-    frames++;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    if (frames > 260) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      return;
-    }
-
-    particles.forEach(p => {
-      p.x += p.speedX;
-      p.y += p.speedY;
-      p.rotation += p.rotationSpeed;
-      if (frames > 180) {
-        p.opacity = Math.max(0, 1 - (frames - 180) / 80);
-      }
-
-      ctx.save();
-      ctx.translate(p.x, p.y);
-      ctx.rotate((p.rotation * Math.PI) / 180);
-      ctx.globalAlpha = p.opacity;
-      ctx.fillStyle = p.color;
-      ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
-      ctx.restore();
     });
 
-    requestAnimationFrame(animate);
-  }
-  animate();
-}
-</script>
+    // ── MOBILE SWIPE GESTURE SUPPORT ────────────────────────────
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchStartTime = 0;
+
+    document.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        touchStartTime = Date.now();
+      }
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+      if (!flipbook || isAnimatingFlip) return;
+      if (e.changedTouches.length === 1) {
+        const deltaX = e.changedTouches[0].clientX - touchStartX;
+        const deltaY = e.changedTouches[0].clientY - touchStartY;
+        const elapsedTime = Date.now() - touchStartTime;
+
+        if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5 && elapsedTime < 400) {
+          if (deltaX < 0) {
+            safeFlipNext();
+          } else {
+            safeFlipPrev();
+          }
+        }
+      }
+    }, { passive: true });
+
+    // ── LUXURY CONFETTI CELEBRATION ─────────────────────────────
+    function launchLuxuryConfetti() {
+      const canvas = document.getElementById('confetti-canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const colors = ['#C9A96E', '#E8D5A8', '#6B1D2A', '#8B2540', '#FAF6F0', '#E2B874', '#FFFFFF'];
+      const particles = [];
+      const count = 90;
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * -canvas.height * 0.5,
+          w: 4 + Math.random() * 6,
+          h: 8 + Math.random() * 12,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 6,
+          speedX: (Math.random() - 0.5) * 2.5,
+          speedY: 2 + Math.random() * 3.5,
+          opacity: 1
+        });
+      }
+
+      let frames = 0;
+      function animate() {
+        frames++;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        if (frames > 260) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          return;
+        }
+
+        particles.forEach(p => {
+          p.x += p.speedX;
+          p.y += p.speedY;
+          p.rotation += p.rotationSpeed;
+          if (frames > 180) {
+            p.opacity = Math.max(0, 1 - (frames - 180) / 80);
+          }
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rotation * Math.PI) / 180);
+          ctx.globalAlpha = p.opacity;
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          ctx.restore();
+        });
+
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+  </script>
 
 </body>
+
 </html>
