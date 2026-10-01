@@ -1,0 +1,6 @@
+# Test files
+test.html
+test_spread.html
+
+# Duplicate media originals (renamed copies are used)
+images/media_*.jpg
